@@ -124,6 +124,58 @@ const secu = [
     </div>
   </section>
 
+  <!-- SHOWCASE — révélation au scroll (façon monday) -->
+  <section class="showcase">
+    <div class="container">
+      <div class="sc-eye">Une seule plateforme</div>
+      <h2 class="sc-h2">Un écran pour chaque acteur<span class="dot">.</span></h2>
+      <p class="sc-sub">Du siège au licencié, le même socle décliné en espaces dédiés — et tout se parle, en temps réel.</p>
+
+      <div class="stage" data-reveal>
+        <!-- Écran gauche — Club -->
+        <div class="screen s-left">
+          <div class="scr-top"><span class="clubav">AP</span><div><div class="scr-t">AS Ploërmel</div><div class="scr-s">Espace club</div></div></div>
+          <div class="scr-bar"><div class="scr-barlab"><span>Cotisations à jour</span><b>214 / 248</b></div><div class="scr-track"><i></i></div></div>
+          <div class="scr-money">8 680 €<span>encaissés cette saison</span></div>
+        </div>
+
+        <!-- Écran central — Fédération -->
+        <div class="screen s-main">
+          <div class="scr-head"><span class="scr-title">Espace Fédéral · Pilotage</span><span class="scr-live"><i></i> En direct</span></div>
+          <div class="scr-kpis">
+            <div><span>Licences</span><b>12 480</b><em>▲ 8,2%</em></div>
+            <div><span>Clubs</span><b>342</b><em>▲ 12</em></div>
+            <div><span>Recettes</span><b>1,24M€</b></div>
+          </div>
+          <svg class="scr-area" viewBox="0 0 320 70" preserveAspectRatio="none">
+            <defs><linearGradient id="scg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F07A20" stop-opacity=".4"></stop><stop offset="1" stop-color="#F07A20" stop-opacity="0"></stop></linearGradient></defs>
+            <path d="M0,58 L36,50 L72,54 L108,38 L144,44 L180,30 L216,34 L252,18 L288,14 L320,6 L320,70 L0,70 Z" fill="url(#scg)"></path>
+            <path d="M0,58 L36,50 L72,54 L108,38 L144,44 L180,30 L216,34 L252,18 L288,14 L320,6" fill="none" stroke="#F07A20" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+
+        <!-- Écran droit — Licencié (mobile) -->
+        <div class="screen s-right">
+          <div class="mp">
+            <div class="mp-notch"></div>
+            <div class="mp-app">
+              <div class="mp-title">Ma licence</div>
+              <div class="mp-card">
+                <div class="mp-name">Camille Martin</div>
+                <span class="mp-sport">Judo · Ceinture marron</span>
+                <svg class="mp-qr" viewBox="0 0 40 40"><rect width="40" height="40" fill="#fff"/><g fill="#0D1E35"><rect x="2" y="2" width="10" height="10"/><rect x="4" y="4" width="6" height="6" fill="#fff"/><rect x="28" y="2" width="10" height="10"/><rect x="30" y="4" width="6" height="6" fill="#fff"/><rect x="2" y="28" width="10" height="10"/><rect x="4" y="30" width="6" height="6" fill="#fff"/><rect x="16" y="4" width="2" height="2"/><rect x="22" y="6" width="2" height="2"/><rect x="16" y="16" width="2" height="2"/><rect x="24" y="18" width="2" height="2"/><rect x="18" y="24" width="2" height="2"/><rect x="30" y="24" width="2" height="2"/><rect x="24" y="30" width="2" height="2"/></g></svg>
+                <span class="mp-valid">● Valide</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toast flottant — le lien entre les écrans -->
+        <div class="toast"><span class="t-dot"></span> Reversement réparti · <b>Ligue Bretagne</b> <span class="t-amt">+6,50 €</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- PREUVE SOCIALE -->
   <section class="sec trust">
     <div class="container">
@@ -384,6 +436,72 @@ const secu = [
   .cta h2 { font-size: 40px; margin-bottom: 14px; }
   .cta .ctas { justify-content: center; margin-top: 26px; }
 
+  /* ---------- SHOWCASE (reveal au scroll) ---------- */
+  .showcase { position: relative; background: var(--navy); color: #fff; padding: 30px 0 96px; overflow: hidden; }
+  .showcase::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; opacity: .5; }
+  .showcase .container { position: relative; z-index: 1; }
+  .sc-eye { text-align: center; font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  .sc-h2 { text-align: center; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 34px; line-height: 1.1; letter-spacing: -.02em; margin: 0 0 12px; }
+  .sc-h2 .dot { color: var(--orange); }
+  .sc-sub { text-align: center; font-size: 17px; line-height: 1.6; color: #9fb0c7; max-width: 600px; margin: 0 auto 56px; }
+
+  .stage { position: relative; display: flex; align-items: center; justify-content: center; gap: 22px; }
+  .screen { background: linear-gradient(180deg, #16305a, #122444); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); }
+  .s-left, .s-right { flex: none; }
+  .s-left { width: 250px; padding: 20px; }
+  .s-main { width: 420px; flex: none; padding: 20px; z-index: 2; }
+
+  .scr-top { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
+  .clubav { width: 34px; height: 34px; border-radius: 9px; background: var(--orange); color: #fff; display: flex; align-items: center; justify-content: center; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 14px; }
+  .scr-t { font-weight: 700; font-size: 14px; }
+  .scr-s { font-size: 12px; color: #9fb0c7; }
+  .scr-bar { margin-bottom: 18px; }
+  .scr-barlab { display: flex; justify-content: space-between; font-size: 12px; color: #9fb0c7; margin-bottom: 7px; }
+  .scr-barlab b { color: #fff; font-family: "JetBrains Mono", monospace; }
+  .scr-track { height: 8px; border-radius: 999px; background: rgba(255,255,255,.1); overflow: hidden; }
+  .scr-track i { display: block; height: 100%; width: 86%; background: var(--mint); border-radius: 999px; }
+  .scr-money { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 26px; }
+  .scr-money span { display: block; font-family: "Inter", sans-serif; font-weight: 500; font-size: 12px; color: #9fb0c7; margin-top: 2px; }
+
+  .scr-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .scr-title { font-weight: 600; font-size: 14px; }
+  .scr-live { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--mint); background: rgba(52,211,153,.12); border: 1px solid rgba(52,211,153,.3); padding: 4px 9px; border-radius: 999px; }
+  .scr-live i { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
+  .scr-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  .scr-kpis > div { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 12px; padding: 12px; }
+  .scr-kpis span { font-size: 11px; color: #9fb0c7; display: block; margin-bottom: 5px; }
+  .scr-kpis b { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 19px; }
+  .scr-kpis em { font-style: normal; display: block; font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; color: var(--mint); margin-top: 3px; }
+  .scr-area { width: 100%; height: 70px; display: block; }
+
+  .s-right { background: none; border: none; box-shadow: none; display: flex; justify-content: center; }
+  .mp { width: 208px; background: #080f1c; border-radius: 34px; padding: 9px; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); position: relative; }
+  .mp-notch { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 78px; height: 18px; background: #080f1c; border-radius: 0 0 12px 12px; z-index: 2; }
+  .mp-app { background: linear-gradient(170deg, #16305a, #0d1e35 60%); border-radius: 26px; padding: 30px 16px 20px; }
+  .mp-title { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 15px; margin-bottom: 12px; }
+  .mp-card { background: #fff; color: var(--navy); border-radius: 16px; padding: 16px; text-align: center; }
+  .mp-name { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 16px; }
+  .mp-sport { display: inline-block; font-size: 10.5px; font-weight: 600; color: var(--orange); background: var(--orange-soft); padding: 3px 9px; border-radius: 999px; margin: 6px 0 12px; }
+  .mp-qr { width: 92px; height: 92px; margin: 0 auto; display: block; }
+  .mp-valid { display: inline-block; font-size: 10px; font-weight: 700; color: var(--good); background: #e6f6ee; padding: 4px 10px; border-radius: 999px; margin-top: 12px; }
+
+  .toast { position: absolute; top: -2px; left: 50%; transform: translateX(-50%); background: #fff; color: var(--navy); border-radius: 999px; padding: 10px 16px; font-size: 13px; font-weight: 600; box-shadow: 0 20px 40px -16px rgba(0,0,0,.6); display: flex; align-items: center; gap: 9px; white-space: nowrap; z-index: 5; }
+  .t-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); }
+  .t-amt { font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--good); }
+
+  /* état caché uniquement si JS actif (classe reveal-ready) → pas de JS = visible */
+  .stage.reveal-ready .screen, .stage.reveal-ready .toast { opacity: 0; transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+  .stage.reveal-ready .s-left { transform: translate(46px, 22px) scale(.92); }
+  .stage.reveal-ready .s-right { transform: translate(-46px, 22px) scale(.92); }
+  .stage.reveal-ready .s-main { transform: translateY(30px) scale(.93); }
+  .stage.reveal-ready .toast { transform: translate(-50%, -18px) scale(.9); }
+  .stage.reveal-ready.in .screen { opacity: 1; transform: none; }
+  .stage.reveal-ready.in .toast { opacity: 1; transform: translateX(-50%); }
+  .stage.reveal-ready.in .s-main { transition-delay: .05s; }
+  .stage.reveal-ready.in .s-left { transition-delay: .18s; }
+  .stage.reveal-ready.in .s-right { transition-delay: .3s; }
+  .stage.reveal-ready.in .toast { transition-delay: .52s; }
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 960px) {
     .grid { grid-template-columns: 1fr; gap: 36px; }
@@ -391,6 +509,13 @@ const secu = [
     .cockpit { max-width: 480px; }
     .modgrid { grid-template-columns: repeat(3, 1fr); }
     .grid4 { grid-template-columns: repeat(2, 1fr); }
+    /* showcase → empilé, révélation verticale */
+    .stage { flex-direction: column; }
+    .s-left, .s-main { width: 100%; max-width: 440px; }
+    .toast { display: none; }
+    .stage.reveal-ready .s-left,
+    .stage.reveal-ready .s-right,
+    .stage.reveal-ready .s-main { transform: translateY(24px) scale(.97); }
   }
   @media (max-width: 620px) {
     .container { padding: 0 20px; }
@@ -412,5 +537,28 @@ const secu = [
     .impact { grid-template-columns: 1fr; gap: 22px; }
     .grid4 { grid-template-columns: 1fr; }
     .cta h2 { font-size: 30px; }
+    .showcase { padding: 20px 0 56px; }
+    .sc-h2 { font-size: 26px; }
+    .sc-sub { font-size: 15.5px; margin-bottom: 36px; }
   }
 </style>
+
+<script>
+  const stage = document.querySelector(".stage[data-reveal]");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (stage && !reduce && "IntersectionObserver" in window) {
+    stage.classList.add("reveal-ready");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            stage.classList.add("in");
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(stage);
+  }
+</script>
