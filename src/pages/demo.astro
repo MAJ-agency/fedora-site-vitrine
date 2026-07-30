@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const points = [
+  { t: "Une démo personnalisée", d: "Sur vos vrais parcours de licence et vos règles de gestion." },
+  { t: "Un chiffrage adapté", d: "Selon votre volume de licences et le plan qui vous convient." },
+  { t: "Réponse sous 24 h", d: "Un interlocuteur dédié vous recontacte rapidement." },
+  { t: "Sans engagement", d: "Un échange pour voir si Fedora est fait pour votre fédération." },
+];
+const volumes = ["Moins de 1 000 licenciés", "1 000 – 5 000", "5 000 – 20 000", "20 000 – 100 000", "Plus de 100 000"];
+---
+
+<Layout title="Demander une démo — Fedora" description="Voyons Fedora sur votre fédération : une démo personnalisée et un chiffrage adapté à votre volume de licences.">
+  <section class="demo">
+    <Nav />
+    <div class="container demo-body">
+      <div class="dgrid">
+        <div class="pitch">
+          <div class="eyebrow">Demander une démo</div>
+          <h1>Voyons Fedora sur votre fédération<span class="dot">.</span></h1>
+          <p class="sub">Dites-nous en quelques mots où vous en êtes. On vous prépare une démo sur mesure, et un chiffrage clair.</p>
+          <ul class="points">
+            {points.map((p) => (
+              <li>
+                <span class="ck"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#F07A20" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
+                <span><b>{p.t}</b><span class="pd">{p.d}</span></span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <form class="formcard" action="#" method="post">
+          <div class="row2">
+            <label>Prénom<input type="text" name="prenom" placeholder="Camille" /></label>
+            <label>Nom<input type="text" name="nom" placeholder="Martin" /></label>
+          </div>
+          <label>Email professionnel<input type="email" name="email" placeholder="camille@ma-federation.fr" /></label>
+          <label>Fédération / structure<input type="text" name="structure" placeholder="Fédération Française de…" /></label>
+          <label>Votre rôle<input type="text" name="role" placeholder="Responsable licences, DG, président…" /></label>
+          <label>Nombre de licenciés
+            <select name="volume">
+              {volumes.map((v) => <option>{v}</option>)}
+            </select>
+          </label>
+          <label>Votre projet (optionnel)<textarea name="message" rows="3" placeholder="Ce que vous cherchez à digitaliser, vos outils actuels…"></textarea></label>
+          <button type="submit">Envoyer ma demande</button>
+          <p class="legal">En envoyant ce formulaire, vous acceptez d'être recontacté par l'équipe Fedora. Vos données restent en France.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .demo { position: relative; background: var(--navy); color: #fff; padding: 0 0 90px; overflow: hidden; }
+  .demo::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; opacity: .7; }
+  .demo::after { content: ""; position: absolute; width: 760px; height: 760px; right: -200px; top: -280px; background: radial-gradient(circle, rgba(240,122,32,.16), transparent 62%); }
+  .demo-body { position: relative; z-index: 1; padding-top: 40px; }
+  .dgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+
+  .eyebrow { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  h1 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 44px; line-height: 1.05; letter-spacing: -.02em; margin: 0 0 16px; }
+  h1 .dot { color: var(--orange); }
+  .sub { font-size: 18px; line-height: 1.6; color: #aeb8c7; margin: 0 0 32px; max-width: 460px; }
+  .points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px; }
+  .points li { display: flex; gap: 14px; align-items: flex-start; }
+  .ck { width: 34px; height: 34px; border-radius: 9px; background: rgba(240,122,32,.16); display: flex; align-items: center; justify-content: center; flex: none; }
+  .points b { display: block; font-size: 16px; font-weight: 600; }
+  .points .pd { display: block; font-size: 14px; color: #9fb0c7; margin-top: 2px; }
+
+  .formcard { background: #fff; color: var(--navy); border-radius: 20px; padding: 30px 30px 26px; box-shadow: 0 40px 80px -24px rgba(0,0,0,.6); display: flex; flex-direction: column; gap: 16px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label { display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; font-weight: 600; color: var(--navy); }
+  input, select, textarea { font-family: inherit; font-size: 14.5px; font-weight: 400; color: var(--navy); border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; background: #fff; outline: none; transition: border-color .15s, box-shadow .15s; }
+  input::placeholder, textarea::placeholder { color: #9aa4b2; }
+  input:focus, select:focus, textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(240,122,32,.15); }
+  textarea { resize: vertical; }
+  button { margin-top: 6px; background: var(--orange); color: #fff; font-weight: 600; font-size: 16px; padding: 14px; border: none; border-radius: 11px; cursor: pointer; }
+  button:hover { filter: brightness(1.05); }
+  .legal { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 4px 0 0; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px) {
+    .dgrid { grid-template-columns: 1fr; gap: 36px; }
+    .sub { max-width: none; }
+  }
+  @media (max-width: 620px) {
+    .container { padding: 0 20px; }
+    .demo { padding-bottom: 60px; }
+    h1 { font-size: 32px; }
+    .sub { font-size: 16px; }
+    .row2 { grid-template-columns: 1fr; }
+    .formcard { padding: 24px 20px; }
+  }
+</style>

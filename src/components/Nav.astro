@@ -1,0 +1,261 @@
+---
+import Logo from "./Logo.astro";
+
+interface Props {
+  theme?: "dark" | "light";
+}
+const { theme = "dark" } = Astro.props;
+
+// --- Méga-menu Produit ---
+const socle = [
+  { l: "Prise & gestion des licences", d: "Parcours personnalisables", href: "/produit/socle" },
+  { l: "Affiliation / Réaffiliation", d: "Clubs et structures", href: "/produit/socle" },
+  { l: "Paiements multi-canaux", d: "CB, SEPA, chèque / espèces", href: "/produit/socle" },
+  { l: "Finances & reversements", d: "Quote-parts par structure", href: "/produit/socle" },
+  { l: "Statistiques & exports", d: "Tableaux de bord, indicateurs", href: "/produit/socle" },
+];
+const croissance = [
+  { l: "Formations", d: "Sessions, certifications, diplômes", href: "/produit/formations" },
+  { l: "Compétitions", d: "Calendrier, inscriptions, classements", href: "/produit/competitions" },
+  { l: "App mobile licencié", d: "Licence numérique, QR code", href: "/produit/app-mobile" },
+  { l: "Planning", d: "Disponibilités, réservations, agendas", href: "/produit/planning" },
+  { l: "GED & Élections", d: "Signatures, archivage, votes en ligne", href: "/produit/ged" },
+];
+const plateforme = [
+  { l: "Espaces dédiés", d: "Fédéral, Ligue, Comité, Club, Licencié", href: "/produit" },
+  { l: "Sécurité & souveraineté", d: "2FA, RBAC, HDS, option SecNumCloud", href: "/produit/securite" },
+  { l: "Intégrations & API", d: "Lemonway, HelloAsso, Zoho, Salesforce", href: "/produit/integrations" },
+  { l: "Un outil ouvert", d: "REST, Webhooks, clés API sécurisées", href: "/produit/integrations" },
+];
+
+// --- Méga-menu Solutions ---
+const acteurs = [
+  { l: "Fédérations", d: "Pilotez tout votre réseau, du siège au terrain", href: "/solutions/federations", icon: `<path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>` },
+  { l: "Ligues & Comités", d: "Gérez votre échelon régional ou départemental", href: "/solutions/federations", icon: `<path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/>` },
+  { l: "Clubs", d: "Simplifiez la vie de vos bénévoles", href: "/solutions/clubs", icon: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>` },
+  { l: "Licenciés", d: "Leur licence et leur club, dans la poche", href: "/solutions/licencies", icon: `<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>` },
+];
+const besoins = [
+  { l: "Digitaliser mes licences", d: "Prise de licence & affiliation en ligne", href: "/produit/socle", icon: `<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/>` },
+  { l: "Automatiser les reversements", d: "Quote-parts calculées et réparties seules", href: "/solutions/federations", icon: `<path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>` },
+  { l: "Déployer l'app mobile", d: "Licence numérique & canal direct licenciés", href: "/produit/app-mobile", icon: `<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>` },
+  { l: "Migrer depuis un autre outil", d: "Reprise de données incluse", href: "/demo", icon: `<path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 6.4 2.6L21 8M21 3v5h-5"/>` },
+];
+---
+
+<header class={`site-header ${theme}`}>
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a href="/" class="brand"><Logo light={theme === "dark"} width={108} /></a>
+      <button type="button" class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+      <div class="links" id="nav-links">
+        <div class="drop nav-produit">
+          <a href="/produit">Produit <span class="caret"></span></a>
+          <div class="mega mega-produit">
+            <div class="mega-inner">
+              <div class="cols3">
+                <div>
+                  <div class="colhead"><span class="ib"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 4v16"></path></svg></span><div><div class="ch">Le socle</div><div class="cs">Gestion des licences</div></div></div>
+                  {socle.map((i) => (<a class="mi" href={i.href}><div class="l">{i.l}</div><div class="d">{i.d}</div></a>))}
+                </div>
+                <div>
+                  <div class="colhead"><span class="ib"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"></rect><rect x="13" y="3" width="8" height="8" rx="1.5"></rect><rect x="3" y="13" width="8" height="8" rx="1.5"></rect><rect x="13" y="13" width="8" height="8" rx="1.5"></rect></svg></span><div><div class="ch">Les modules</div><div class="cs">Croissance</div></div><span class="badge">Activables</span></div>
+                  {croissance.map((i) => (<a class="mi" href={i.href}><div class="l">{i.l}</div><div class="d">{i.d}</div></a>))}
+                </div>
+                <div>
+                  <div class="colhead"><span class="ib"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"></path><path d="M9.5 12l2 2 3.5-4"></path></svg></span><div><div class="ch">La plateforme</div><div class="cs">Socle transverse</div></div></div>
+                  {plateforme.map((i) => (<a class="mi" href={i.href}><div class="l">{i.l}</div><div class="d">{i.d}</div></a>))}
+                </div>
+              </div>
+              <div class="megafoot">
+                <span class="promo"><b>Nouveau —</b> l'app mobile licencié : licence numérique, QR code & communication directe.</span>
+                <a href="/produit" class="mlink">Voir toute la plateforme →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="drop nav-solutions">
+          <a href="/solutions">Solutions <span class="caret"></span></a>
+          <div class="mega mega-solutions">
+            <div class="mega-inner">
+              <div class="cols-sol">
+                <div>
+                  <div class="solhead">Par acteur</div>
+                  {acteurs.map((i) => (
+                    <a class="si" href={i.href}>
+                      <span class="sib"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={i.icon} /></span>
+                      <span><span class="l">{i.l}</span><span class="d">{i.d}</span></span>
+                    </a>
+                  ))}
+                </div>
+                <div>
+                  <div class="solhead">Par besoin</div>
+                  {besoins.map((i) => (
+                    <a class="si" href={i.href}>
+                      <span class="sib"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={i.icon} /></span>
+                      <span><span class="l">{i.l}</span><span class="d">{i.d}</span></span>
+                    </a>
+                  ))}
+                </div>
+                <div class="feature">
+                  <div class="fbadge">Vous changez d'outil ?</div>
+                  <div class="ftitle">La migration, on s'en occupe.</div>
+                  <div class="fdesc">Reprise et migration de vos données incluses, déploiement accompagné. Vous ne repartez jamais de zéro.</div>
+                  <a class="flink" href="/demo">Parler à un expert <b>→</b></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="/ressources">Ressources</a>
+        <a href="/clients">Clients</a>
+        <a href="/tarifs">Tarifs</a>
+      </div>
+      <div class="right">
+        <a href="/demo" class="pill">Demander une démo</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header { position: relative; z-index: 60; }
+  .nav-wrap { position: relative; max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+  .brand { display: inline-flex; text-decoration: none; }
+  .links { display: flex; align-items: stretch; gap: 32px; font-size: 15px; font-weight: 500; }
+  .right { display: flex; align-items: center; gap: 18px; }
+  .caret { width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); opacity: .7; margin-top: -3px; }
+  .drop { position: static; display: flex; align-items: center; }
+  .pill { background: var(--orange); color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; padding: 10px 18px; border-radius: 999px; }
+
+  /* --- Thème sombre (par défaut, posé sur un hero navy) --- */
+  .site-header.dark .links > a,
+  .site-header.dark .drop > a { color: #c7d2e0; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color .15s; }
+  .site-header.dark .links a:hover { color: #fff; }
+
+  /* --- Thème clair (barre blanche, pages claires) --- */
+  .site-header.light { background: #fff; border-bottom: 1px solid var(--line); }
+  .site-header.light .links > a,
+  .site-header.light .drop > a { color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color .15s; }
+  .site-header.light .links a:hover { color: var(--navy); }
+
+  /* Panneaux méga */
+  .mega {
+    position: absolute; top: 100%; left: 0; right: 0;
+    padding-top: 12px;
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+    pointer-events: none; z-index: 60;
+  }
+  .nav-produit:hover .mega-produit,
+  .nav-solutions:hover .mega-solutions {
+    opacity: 1; visibility: visible; transform: none; pointer-events: auto;
+  }
+  .mega-inner {
+    background: #fff; border: 1px solid var(--line); border-radius: 16px;
+    padding: 28px 30px 24px; box-shadow: 0 30px 60px -24px rgba(13,30,53,.45);
+    color: var(--navy);
+  }
+
+  /* Produit */
+  .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .colhead { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; margin-bottom: 6px; border-bottom: 1px solid var(--line); }
+  .ib { width: 38px; height: 38px; border-radius: 10px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; flex: none; }
+  .ch { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 15px; }
+  .cs { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .badge { margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--orange); background: var(--orange-soft); padding: 3px 8px; border-radius: 999px; }
+  .mi { display: block; padding: 8px 10px; margin: 0 -10px; border-radius: 9px; text-decoration: none; color: inherit; }
+  .mi:hover { background: var(--cloud); }
+  .mi .l { font-weight: 600; font-size: 14px; }
+  .mi .d { font-size: 12px; color: var(--muted); margin-top: 1px; }
+  .megafoot { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .promo { font-size: 13px; color: var(--muted); }
+  .promo b { color: var(--navy); }
+  .mlink { font-weight: 600; font-size: 14px; color: var(--orange); text-decoration: none; }
+
+  /* Solutions */
+  .cols-sol { display: grid; grid-template-columns: 1fr 1fr .92fr; gap: 30px; }
+  .solhead { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding-bottom: 12px; margin-bottom: 6px; border-bottom: 1px solid var(--line); }
+  .si { display: flex; gap: 12px; align-items: flex-start; padding: 9px 10px; margin: 0 -10px; border-radius: 9px; text-decoration: none; color: inherit; }
+  .si:hover { background: var(--cloud); }
+  .sib { width: 36px; height: 36px; border-radius: 9px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; flex: none; }
+  .si .l { display: block; font-weight: 600; font-size: 14px; }
+  .si .d { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
+  .feature { background: var(--navy); color: #fff; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+  .feature::after { content: ""; position: absolute; width: 240px; height: 240px; right: -80px; bottom: -110px; background: radial-gradient(circle, rgba(240,122,32,.28), transparent 65%); }
+  .feature > * { position: relative; z-index: 1; }
+  .fbadge { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+  .ftitle { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 20px; line-height: 1.15; margin-bottom: 9px; }
+  .fdesc { font-size: 13px; color: #aeb8c7; line-height: 1.5; margin-bottom: auto; }
+  .flink { margin-top: 18px; font-weight: 600; font-size: 14px; color: #fff; text-decoration: none; }
+  .flink b { color: var(--orange); }
+
+  /* Burger — masqué en desktop */
+  .burger { display: none; background: none; }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 900px) {
+    .nav-wrap { padding: 0 20px; }
+    .nav { padding: 14px 0; }
+
+    /* burger visible, poussé à droite avec le pill */
+    .burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 42px; height: 42px; padding: 0 10px; border: 1px solid; border-radius: 10px; cursor: pointer; order: 3; }
+    .right { order: 2; margin-left: auto; margin-right: 10px; }
+    .burger span { display: block; height: 2px; width: 100%; border-radius: 2px; transition: transform .2s, opacity .2s; }
+    .site-header.dark .burger { border-color: rgba(255,255,255,.18); }
+    .site-header.dark .burger span { background: #fff; }
+    .site-header.light .burger { border-color: var(--line); }
+    .site-header.light .burger span { background: var(--navy); }
+
+    /* le pill un peu plus compact */
+    .pill { font-size: 13px; padding: 9px 15px; }
+
+    /* les liens deviennent un panneau déroulant */
+    .links { position: absolute; top: 100%; left: 20px; right: 20px; flex-direction: column; align-items: stretch; gap: 0; padding: 8px; border-radius: 14px; box-shadow: 0 30px 60px -24px rgba(13,30,53,.5); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .18s ease, transform .18s ease, visibility .18s; z-index: 70; }
+    .site-header.dark .links { background: #0f2140; border: 1px solid rgba(255,255,255,.1); }
+    .site-header.light .links { background: #fff; border: 1px solid var(--line); }
+
+    .site-header.open .links { opacity: 1; visibility: visible; transform: none; }
+
+    /* liens empilés, pleine largeur */
+    .links > a,
+    .drop { display: block; width: 100%; }
+    .drop { flex-direction: column; align-items: stretch; }
+    .drop > a,
+    .links > a { padding: 13px 14px; border-radius: 10px; font-size: 16px; }
+    .site-header.dark .links > a:hover,
+    .site-header.dark .drop > a:hover { background: rgba(255,255,255,.06); }
+    .site-header.light .links > a:hover,
+    .site-header.light .drop > a:hover { background: var(--cloud); }
+
+    /* pas de méga-menu au touch : on renvoie vers les hubs /produit et /solutions */
+    .mega { display: none; }
+    .caret { display: none; }
+
+    /* animation burger -> croix */
+    .site-header.open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .site-header.open .burger span:nth-child(2) { opacity: 0; }
+    .site-header.open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+</style>
+
+<script>
+  document.querySelectorAll(".site-header .burger").forEach((btn) => {
+    const header = btn.closest(".site-header");
+    const close = () => {
+      header.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    };
+    btn.addEventListener("click", () => {
+      const open = header.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    // fermer en cliquant un lien, avec Échap, ou en repassant en desktop
+    header.querySelectorAll(".links a").forEach((a) => a.addEventListener("click", close));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+    window.addEventListener("resize", () => { if (window.innerWidth > 900) close(); });
+  });
+</script>

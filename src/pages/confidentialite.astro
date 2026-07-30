@@ -1,0 +1,81 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Politique de confidentialité — Fedora" description="Comment Fedora collecte, utilise et protège vos données personnelles, conformément au RGPD.">
+  <Nav theme="light" />
+  <section class="head">
+    <div class="container">
+      <div class="eyebrow">RGPD</div>
+      <h1>Politique de confidentialité</h1>
+      <p class="sub">Dernière mise à jour : <span class="ph">[date à compléter]</span></p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container prose">
+      <div class="notice"><b>À finaliser avant mise en ligne.</b> Ce document est un modèle conforme au RGPD ; les champs entre crochets et la liste précise des traitements doivent être validés par la société éditrice (et son DPO le cas échéant).</div>
+
+      <p class="intro">La protection de vos données est au cœur de Fedora. Cette politique décrit les données que nous traitons dans le cadre du site vitrine et de la plateforme, les finalités poursuivies et les droits dont vous disposez.</p>
+
+      <h2>1. Responsable de traitement</h2>
+      <p>Le responsable de traitement est <b>MAJ</b>, éditeur de Fedora — <span class="ph">[coordonnées complètes, voir mentions légales]</span>. Pour toute question : <span class="ph">[email DPO / contact]</span>.</p>
+
+      <h2>2. Données collectées</h2>
+      <p>Sur le site vitrine, nous collectons uniquement les données que vous nous transmettez via les formulaires (demande de démo, contact) : nom, prénom, adresse e-mail professionnelle, fédération/structure, rôle et message. Des données de navigation anonymisées peuvent être mesurées à des fins statistiques.</p>
+      <p>Dans le cadre de la plateforme, les données des licenciés et structures sont traitées pour le compte de chaque fédération cliente, qui en reste responsable de traitement (Fedora agissant comme sous-traitant au sens du RGPD).</p>
+
+      <h2>3. Finalités et bases légales</h2>
+      <ul>
+        <li>Répondre à vos demandes de démo et de contact — <b>mesure précontractuelle / intérêt légitime</b>.</li>
+        <li>Vous adresser des informations sur nos offres — <b>consentement</b>, révocable à tout moment.</li>
+        <li>Améliorer et sécuriser le site — <b>intérêt légitime</b>.</li>
+      </ul>
+
+      <h2>4. Destinataires & hébergement</h2>
+      <p>Vos données sont traitées par les équipes habilitées de l'éditeur et par ses sous-traitants techniques. L'hébergement est assuré sur une infrastructure <b>certifiée HDS</b>, <b>100 % en France</b>, avec option SecNumCloud. Aucune donnée n'est transférée hors de l'Union européenne.</p>
+
+      <h2>5. Durée de conservation</h2>
+      <p>Les données issues des formulaires sont conservées le temps nécessaire au traitement de votre demande, puis archivées ou supprimées <span class="ph">[durée à préciser, ex. 3 ans après le dernier contact]</span>. Les données de la plateforme suivent les durées définies contractuellement avec chaque fédération.</p>
+
+      <h2>6. Vos droits</h2>
+      <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données, ainsi que du droit de définir des directives post-mortem. Vous pouvez les exercer en écrivant à <span class="ph">[email]</span>. Vous pouvez également introduire une réclamation auprès de la <b>CNIL</b>.</p>
+
+      <h2>7. Cookies</h2>
+      <p>Le site n'utilise que des cookies strictement nécessaires et, éventuellement, des cookies de mesure d'audience anonymisée. Aucun traceur publicitaire n'est déposé. Vous pouvez configurer votre navigateur pour les refuser.</p>
+
+      <h2>8. Sécurité</h2>
+      <p>Nous mettons en œuvre des mesures techniques et organisationnelles adaptées : chiffrement au repos et en transit, authentification forte (2FA), gestion fine des droits (RBAC), journalisation et audits réguliers. En savoir plus sur la <a href="/produit/securite">sécurité & souveraineté</a>.</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .head { background: var(--cloud); border-bottom: 1px solid var(--line); padding: 60px 0 48px; }
+  .eyebrow { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  h1 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 42px; line-height: 1.05; letter-spacing: -.02em; margin: 0 0 12px; }
+  .sub { font-size: 15px; color: var(--muted); margin: 0; }
+
+  .sec { padding: 60px 0 90px; }
+  .prose { max-width: 760px; }
+  .prose .intro { font-size: 17px; line-height: 1.65; color: var(--muted); margin: 0 0 8px; }
+  .prose h2 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -.01em; margin: 38px 0 12px; }
+  .prose p { font-size: 15.5px; line-height: 1.7; color: #3a4658; margin: 0 0 14px; }
+  .prose ul { margin: 0 0 14px; padding-left: 20px; }
+  .prose li { font-size: 15.5px; line-height: 1.7; color: #3a4658; margin-bottom: 8px; }
+  .prose a { color: var(--navy); font-weight: 600; }
+  .notice { background: var(--orange-soft); border: 1px solid #f3c9a8; border-radius: 12px; padding: 16px 18px; font-size: 14px; color: #8a4a12; margin-bottom: 20px; }
+  .ph { color: var(--muted); font-style: italic; }
+
+  @media (max-width: 620px) {
+    .container { padding: 0 20px; }
+    .head { padding: 48px 0 36px; }
+    h1 { font-size: 30px; }
+    .sec { padding: 44px 0 70px; }
+  }
+</style>

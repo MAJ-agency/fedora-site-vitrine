@@ -1,0 +1,246 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const enjeux = [
+  { q: "Des données éparpillées entre les échelons", a: "Ligues, comités et clubs travaillent chacun dans leur coin. Fedora unifie tout dans une seule base, à jour en temps réel." },
+  { q: "Des reversements complexes et manuels", a: "Les quote-parts se calculent et remontent automatiquement à chaque niveau. Fini les tableurs de répartition." },
+  { q: "La conformité et les rapports institutionnels", a: "Exports normés, statistiques officielles, traçabilité — prêts à transmettre à vos tutelles en un clic." },
+  { q: "Deux publics, un seul outil", a: "La profondeur pour vos experts au siège, la simplicité pour les bénévoles des clubs. Chacun son espace." },
+];
+const benefices = [
+  { t: "Pilotage temps réel", d: "Dashboards par ligue, comité et club. Les bons chiffres, à la seconde.", icon: `<path d="M3 3v18h18M7 15l4-4 3 3 5-6"/>` },
+  { t: "Reversements auto", d: "Quote-parts calculées et réparties par structure, sans intervention.", icon: `<path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>` },
+  { t: "Conformité & exports", d: "Rapports institutionnels normés, prêts pour vos tutelles.", icon: `<path d="M9 12l2 2 4-4M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/>` },
+  { t: "RBAC hiérarchique", d: "Chaque échelon voit et gère uniquement son périmètre.", icon: `<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>` },
+];
+const modules = [
+  { t: "Finances & reversements", d: "Quote-parts, SEPA, rapprochements, PSP (Lemonway, HelloAsso).", icon: `<path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>` },
+  { t: "Statistiques & BI", d: "Tableaux de bord, indicateurs clés, exports détaillés.", icon: `<path d="M3 3v18h18M7 15l4-4 3 3 5-6"/>` },
+  { t: "Compétitions", d: "Calendrier fédéral, inscriptions, classements officiels.", icon: `<path d="M6 9V4h12v5a6 6 0 0 1-12 0zM9 21h6M12 15v6"/>` },
+  { t: "Formations & diplômes", d: "Sessions, certifications, suivi des officiels et encadrants.", icon: `<path d="M22 10L12 5 2 10l10 5 10-5zM6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/>` },
+  { t: "Élections & AG", d: "Votes en ligne, assemblées générales dématérialisées.", icon: `<path d="M9 12l2 2 4-4M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/>` },
+  { t: "Annuaire & structures", d: "Arborescence fédérale, KYC, gestion des affiliations.", icon: `<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/>` },
+];
+const secu = [
+  { t: "2FA & RBAC", d: "Double authentification, gestion fine des rôles par échelon.", icon: `<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>` },
+  { t: "Hébergement HDS", d: "100 % français, certifié, sur 2 sites en France.", icon: `<path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/>` },
+  { t: "Option SecNumCloud", d: "Zone qualifiée ANSSI — souveraineté maximale.", icon: `<path d="M12 2l3 6 6 .5-4.5 4 1.5 6L12 15l-6 3.5 1.5-6L3 8.5 9 8z"/>` },
+  { t: "Audit continu", d: "Surveillance externe certifiée + détection des vulnérabilités.", icon: `<circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/>` },
+];
+const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${i}</svg>`;
+---
+
+<Layout title="Fedora pour les fédérations — Pilotez tout votre réseau" description="Une vue consolidée sur chaque ligue, comité et club. Reversements automatisés, conformité assurée et profondeur pour votre staff fédéral.">
+  <!-- HERO -->
+  <section class="hero">
+    <Nav />
+    <div class="container hero-body">
+      <div class="hgrid">
+        <div>
+          <div class="crumb">Solutions <b>›</b> Fédérations, Ligues &amp; Comités</div>
+          <div class="eyebrow">Pour le staff fédéral</div>
+          <h1>Pilotez toute votre fédération, du siège au terrain<span class="dot">.</span></h1>
+          <p class="hsub">Une vue consolidée sur chaque ligue, comité et club. Les reversements automatisés, la conformité assurée, et la profondeur qu'attend votre équipe.</p>
+          <div class="ctas"><a class="btn-primary" href="/demo">Demander une démo</a><a class="btn-ghost" href="/produit/socle">Voir les fonctionnalités</a></div>
+        </div>
+        <div class="netpanel">
+          <div class="nh"><span class="t">Votre réseau — vue consolidée</span><span class="live"><i></i> En direct</span></div>
+          <div class="lvl l1"><span class="dotm"></span><span class="nm">Fédération</span><span class="ct">1</span></div>
+          <div class="lvl l2"><span class="dotm"></span><span class="nm">Ligues régionales</span><span class="ct">12</span></div>
+          <div class="lvl l3"><span class="dotm"></span><span class="nm">Comités départementaux</span><span class="ct">48</span></div>
+          <div class="lvl l4"><span class="dotm"></span><span class="nm">Clubs affiliés</span><span class="ct">1 402</span></div>
+          <div class="lvl l5"><span class="dotm"></span><span class="nm">Licenciés</span><span class="ct">348 210</span></div>
+          <div class="netnote"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#34D399" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg> Chaque échelon ne voit que son périmètre — RBAC hiérarchique.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENJEUX -->
+  <section class="sec light">
+    <div class="container">
+      <div class="eyebrow2">Vos enjeux</div>
+      <h2>Les défis d'une fédération, résolus.</h2>
+      <div class="enj">
+        {enjeux.map((e, i) => (
+          <div class="enjrow"><div class="no">{`0${i + 1}`}</div><div><div class="q">{e.q}</div><div class="a">{e.a}</div></div></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICES -->
+  <section class="sec">
+    <div class="container">
+      <div class="eyebrow2 center">Ce que Fedora change pour vous</div>
+      <h2 class="center">Le contrôle, sans la complexité.</h2>
+      <p class="lead center mb">Tout ce dont le staff fédéral a besoin pour piloter — et rien qui alourdisse le quotidien des clubs.</p>
+      <div class="grid4">
+        {benefices.map((b) => (
+          <div class="bcard"><span class="ib" set:html={ckIcon(b.icon)} /><h3>{b.t}</h3><p>{b.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REVERSEMENTS -->
+  <section class="sec dark">
+    <div class="container">
+      <div class="revwrap">
+        <div>
+          <div class="eyebrow2">Reversements &amp; quote-parts</div>
+          <h2>L'argent circule tout seul.</h2>
+          <p class="lead">À chaque licence vendue, Fedora calcule et répartit la quote-part de chaque niveau — fédération, ligue, comité, club. Automatiquement, traçable, à l'euro près.</p>
+        </div>
+        <div class="revcard">
+          <div class="flow">
+            <div class="fnode"><span class="fl">Licence vendue par le club</span><span class="fp">35,00 €</span></div>
+            <div class="farrow">↓</div>
+            <div class="fnode"><span class="fl">Part Fédération</span><span class="fp">12,00 €</span></div>
+            <div class="fnode"><span class="fl">Part Ligue</span><span class="fp">6,50 €</span></div>
+            <div class="fnode"><span class="fl">Part Comité</span><span class="fp">4,00 €</span></div>
+            <div class="fnode"><span class="fl">Reste au Club</span><span class="fp">12,50 €</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section class="sec light">
+    <div class="container">
+      <div class="eyebrow2 center">Fait pour l'échelon fédéral</div>
+      <h2 class="center">Les capacités qui comptent pour une fédération.</h2>
+      <p class="lead center mb">Le socle licences, plus les modules avancés pensés pour le pilotage d'un réseau.</p>
+      <div class="grid3">
+        {modules.map((m) => (
+          <div class="mod"><span class="ib" set:html={ckIcon(m.icon)} /><h4>{m.t}</h4><p>{m.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITE -->
+  <section class="sec dark">
+    <div class="container">
+      <div class="eyebrow2 center">Sécurité &amp; souveraineté</div>
+      <h2 class="center">Un niveau d'exigence à la hauteur d'une institution.</h2>
+      <div class="grid4 secgrid">
+        {secu.map((s) => (
+          <div class="scard"><span class="ib" set:html={ckIcon(s.icon)} /><h4>{s.t}</h4><p>{s.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec dark finalcta">
+    <div class="container center">
+      <h2>Voyons ce que Fedora ferait pour votre fédération.</h2>
+      <p class="lead center">Une démo sur vos vrais cas d'usage, et un chiffrage adapté à votre volume de licences.</p>
+      <div class="ctas center"><a class="btn-primary" href="/demo">Demander une démo</a><a class="btn-ghost" href="/demo">Nous contacter</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .sec { padding: 90px 0; }
+  .dark { background: var(--navy); color: #fff; }
+  .light { background: var(--cloud); }
+  h2 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 38px; line-height: 1.07; letter-spacing: -.02em; margin: 0; }
+  .eyebrow2 { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  .lead { font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 640px; }
+  .dark .lead { color: #aeb8c7; }
+  .center { text-align: center; } .center.lead, .lead.center { margin-left: auto; margin-right: auto; }
+  .mb { margin-bottom: 48px; }
+  .btn-primary { display: inline-block; background: var(--orange); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 12px; text-decoration: none; }
+  .btn-ghost { display: inline-block; border: 1px solid rgba(255,255,255,.3); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 24px; border-radius: 12px; text-decoration: none; }
+  .ib { width: 48px; height: 48px; border-radius: 12px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; }
+
+  /* hero */
+  .hero { position: relative; background: var(--navy); color: #fff; padding: 0 0 84px; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; opacity: .7; }
+  .hero::after { content: ""; position: absolute; width: 760px; height: 760px; right: -200px; top: -280px; background: radial-gradient(circle, rgba(240,122,32,.18), transparent 62%); }
+  .hero-body { position: relative; z-index: 1; padding-top: 40px; }
+  .hgrid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 46px; align-items: center; }
+  .crumb { font-size: 13px; color: #8595ac; margin-bottom: 16px; } .crumb b { color: #c7d2e0; }
+  .eyebrow { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  h1 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 50px; line-height: 1.04; letter-spacing: -.02em; margin: 0 0 20px; }
+  h1 .dot { color: var(--orange); }
+  .hsub { font-size: 18px; line-height: 1.58; color: #aeb8c7; max-width: 520px; margin: 0 0 28px; }
+  .ctas { display: flex; gap: 14px; }
+
+  .netpanel { background: linear-gradient(180deg, #16305a, #122444); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 24px; box-shadow: 0 40px 80px -24px rgba(0,0,0,.6); }
+  .nh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .nh .t { font-weight: 600; font-size: 14px; }
+  .nh .live { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; color: #34d399; }
+  .nh .live i { width: 7px; height: 7px; border-radius: 50%; background: #34d399; }
+  .lvl { display: flex; align-items: center; gap: 14px; padding: 11px 14px; border-radius: 12px; margin: 7px auto; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+  .lvl.l1 { width: 56%; background: rgba(240,122,32,.16); border-color: rgba(240,122,32,.4); }
+  .lvl.l2 { width: 70%; } .lvl.l3 { width: 84%; } .lvl.l4 { width: 96%; } .lvl.l5 { width: 100%; }
+  .lvl .dotm { width: 9px; height: 9px; border-radius: 50%; background: var(--orange); flex: none; }
+  .lvl .nm { font-size: 13.5px; font-weight: 600; }
+  .lvl .ct { margin-left: auto; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 14px; }
+  .netnote { font-size: 12px; color: #9fb0c7; margin-top: 14px; display: flex; gap: 8px; align-items: center; }
+
+  /* enjeux */
+  .enj { display: flex; flex-direction: column; gap: 2px; margin-top: 32px; max-width: 820px; }
+  .enjrow { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .enjrow:last-child { border-bottom: none; }
+  .enjrow .no { font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--orange); font-size: 14px; flex: none; width: 32px; padding-top: 2px; }
+  .enjrow .q { font-weight: 600; font-size: 16px; margin-bottom: 3px; }
+  .enjrow .a { font-size: 14.5px; color: var(--muted); line-height: 1.5; }
+
+  /* benefices + modules + secu */
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .bcard { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+  .bcard h3 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 20px; margin: 16px 0 8px; }
+  .bcard p { font-size: 14.5px; color: var(--muted); line-height: 1.5; }
+  .mod { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+  .mod h4 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 17px; margin: 12px 0 5px; }
+  .mod p { font-size: 13px; color: var(--muted); line-height: 1.45; }
+  .secgrid { margin-top: 40px; }
+  .scard h4 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 16px; margin: 14px 0 7px; }
+  .scard p { font-size: 13px; color: #aeb8c7; line-height: 1.5; }
+  .scard .ib { background: rgba(240,122,32,.16); }
+
+  /* reversements */
+  .revwrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; }
+  .revcard { background: var(--navy-soft); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 26px; }
+  .flow { display: flex; flex-direction: column; gap: 10px; }
+  .fnode { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 13px 16px; }
+  .fnode .fl { font-size: 14px; font-weight: 600; }
+  .fnode .fp { margin-left: auto; font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--orange); font-size: 14px; }
+  .farrow { text-align: center; color: #5f6e86; font-size: 16px; line-height: .6; }
+
+  .finalcta { text-align: center; }
+  .finalcta h2 { font-size: 42px; margin-bottom: 14px; }
+  .finalcta .ctas { justify-content: center; margin-top: 26px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .hgrid { grid-template-columns: 1fr; gap: 36px; }
+    h1 { font-size: 42px; }
+    .revwrap { grid-template-columns: 1fr; gap: 32px; }
+    .grid4 { grid-template-columns: repeat(2, 1fr); }
+    .grid3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .container { padding: 0 20px; }
+    .sec { padding: 56px 0; }
+    .hero { padding-bottom: 56px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+    .hsub, .lead { font-size: 16px; }
+    .ctas { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-ghost { text-align: center; }
+    .grid4, .grid3 { grid-template-columns: 1fr; }
+    .finalcta h2 { font-size: 30px; }
+  }
+</style>

@@ -1,0 +1,191 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const acteurs = [
+  { l: "Fédérations", d: "Pilotez tout votre réseau, du siège au terrain : reversements, conformité et exports institutionnels sur des chiffres à jour.", href: "/solutions/federations", icon: `<path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>` },
+  { l: "Ligues & Comités", d: "Gérez votre échelon régional ou départemental, avec une vue claire sur vos clubs et vos flux financiers.", href: "/solutions/federations", icon: `<path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/>` },
+  { l: "Clubs", d: "Simplifiez la vie de vos bénévoles : inscriptions, cotisations et membres, sans papier ni tableur.", href: "/solutions/clubs", icon: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>` },
+  { l: "Licenciés", d: "Leur licence numérique, leur QR code et leur club, toujours dans la poche via l'app mobile.", href: "/solutions/licencies", icon: `<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>` },
+];
+
+const besoins = [
+  { l: "Digitaliser mes licences", d: "Prise de licence et affiliation 100 % en ligne, parcours personnalisables.", href: "/produit/socle", icon: `<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/>` },
+  { l: "Automatiser les reversements", d: "Quote-parts calculées et réparties seules entre chaque échelon.", href: "/solutions/federations", icon: `<path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>` },
+  { l: "Déployer l'app mobile", d: "Licence numérique et canal direct avec vos licenciés.", href: "/produit/app-mobile", icon: `<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>` },
+  { l: "Migrer depuis un autre outil", d: "Reprise et migration de vos données incluses, déploiement accompagné.", href: "/demo", icon: `<path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 6.4 2.6L21 8M21 3v5h-5"/>` },
+];
+
+const ai = (i) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${i}</svg>`;
+const bi = (i) => `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${i}</svg>`;
+---
+
+<Layout title="Solutions — Fedora" description="Une solution pour chaque acteur du sport fédéral : fédérations, ligues, comités, clubs et licenciés.">
+  <section class="hero">
+    <Nav />
+    <div class="container hero-body">
+      <div class="eyebrow">Solutions</div>
+      <h1>Une solution pour chaque acteur de votre sport<span class="dot">.</span></h1>
+      <p class="hsub">Du siège fédéral au licencié, chacun retrouve son espace et ses outils — sur une seule et même plateforme, partagée par tout votre réseau.</p>
+      <div class="ctas">
+        <a class="btn-primary" href="/demo">Demander une démo</a>
+        <a class="btn-ghost" href="/produit">Explorer la plateforme</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAR ACTEUR -->
+  <section class="sec">
+    <div class="container">
+      <div class="eyebrow2 center">Par acteur</div>
+      <h2 class="center">Chacun son espace, une même plateforme.</h2>
+      <p class="lead center mb">La profondeur pour le staff fédéral, la simplicité pour les bénévoles, le mobile pour les licenciés.</p>
+      <div class="grid2">
+        {acteurs.map((a) => (
+          <a class="acard" href={a.href}>
+            <span class="ib" set:html={ai(a.icon)} />
+            <div class="atxt">
+              <h3>{a.l}</h3>
+              <p>{a.d}</p>
+              <span class="more">Découvrir →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PAR BESOIN -->
+  <section class="sec cloud">
+    <div class="container">
+      <div class="eyebrow2 center">Par besoin</div>
+      <h2 class="center">Par où voulez-vous commencer ?</h2>
+      <p class="lead center mb">Adressez d'abord votre priorité — le reste de la plateforme est là quand vous êtes prêt.</p>
+      <div class="grid4">
+        {besoins.map((b) => (
+          <a class="bcard" href={b.href}>
+            <span class="sib" set:html={bi(b.icon)} />
+            <h4>{b.l}</h4>
+            <p>{b.d}</p>
+            <span class="more">Voir →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MIGRATION -->
+  <section class="sec">
+    <div class="container">
+      <div class="feature">
+        <div class="fcol">
+          <div class="fbadge">Vous changez d'outil ?</div>
+          <h2 class="fh">La migration, on s'en occupe.</h2>
+          <p class="fdesc">Reprise et migration de vos données incluses, déploiement accompagné pas à pas. Vos clubs sont embarqués, vos historiques préservés — vous ne repartez jamais de zéro.</p>
+          <a class="btn-primary" href="/demo">Parler à un expert</a>
+        </div>
+        <div class="fsteps">
+          <div class="fstep"><span class="fn">1</span><div><b>Cadrage</b><span>On analyse votre existant et vos données.</span></div></div>
+          <div class="fstep"><span class="fn">2</span><div><b>Reprise</b><span>On importe licences, structures et historiques.</span></div></div>
+          <div class="fstep"><span class="fn">3</span><div><b>Déploiement</b><span>On forme vos équipes et vos clubs.</span></div></div>
+          <div class="fstep"><span class="fn">4</span><div><b>Accompagnement</b><span>Un support réactif, saison après saison.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec navy cta">
+    <div class="container center">
+      <h2>Trouvons la bonne solution pour vous.</h2>
+      <p class="lead center">Dites-nous qui vous êtes et ce que vous gérez — on vous montre le reste.</p>
+      <div class="ctas center"><a class="btn-primary" href="/demo">Demander une démo</a><a class="btn-ghost" href="/tarifs">Voir les tarifs</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .sec { padding: 90px 0; }
+  .sec.cloud { background: var(--cloud); }
+  .sec.navy { background: var(--navy); color: #fff; }
+  h2 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 34px; line-height: 1.1; letter-spacing: -.02em; margin: 0; }
+  .eyebrow2 { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  .lead { font-size: 17px; line-height: 1.6; color: var(--muted); }
+  .sec.navy .lead { color: #9fb0c7; }
+  .center { text-align: center; }
+  .center.lead, .lead.center { margin-left: auto; margin-right: auto; max-width: 640px; }
+  .mb { margin-bottom: 48px; }
+  .btn-primary { display: inline-block; background: var(--orange); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 12px; text-decoration: none; }
+  .btn-ghost { display: inline-block; border: 1px solid rgba(255,255,255,.3); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 24px; border-radius: 12px; text-decoration: none; }
+  .more { font-weight: 600; font-size: 14px; color: var(--orange); }
+  .ib { width: 52px; height: 52px; border-radius: 13px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; flex: none; }
+
+  /* hero */
+  .hero { position: relative; background: var(--navy); color: #fff; padding: 0 0 80px; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; opacity: .7; }
+  .hero::after { content: ""; position: absolute; width: 760px; height: 760px; right: -200px; top: -300px; background: radial-gradient(circle, rgba(240,122,32,.18), transparent 62%); }
+  .hero-body { position: relative; z-index: 1; padding-top: 44px; }
+  .eyebrow { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+  h1 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 50px; line-height: 1.04; letter-spacing: -.02em; margin: 0 0 18px; max-width: 800px; }
+  h1 .dot { color: var(--orange); }
+  .hsub { font-size: 18px; line-height: 1.58; color: #aeb8c7; max-width: 640px; margin: 0 0 28px; }
+  .ctas { display: flex; gap: 14px; }
+
+  /* par acteur */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .acard { display: flex; gap: 20px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 30px; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s; }
+  .acard:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -24px rgba(13,30,53,.3); }
+  .acard h3 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 21px; margin: 0 0 8px; }
+  .acard p { font-size: 14.5px; color: var(--muted); line-height: 1.55; margin: 0 0 14px; }
+
+  /* par besoin */
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .bcard { display: block; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 26px; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s; }
+  .bcard:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -24px rgba(13,30,53,.3); }
+  .sib { width: 44px; height: 44px; border-radius: 11px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .bcard h4 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 17px; margin: 0 0 8px; }
+  .bcard p { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0 0 14px; }
+
+  /* migration feature */
+  .feature { display: grid; grid-template-columns: 1.05fr .95fr; gap: 44px; align-items: center; background: var(--navy); color: #fff; border-radius: 22px; padding: 48px; position: relative; overflow: hidden; }
+  .feature::after { content: ""; position: absolute; width: 420px; height: 420px; right: -140px; bottom: -180px; background: radial-gradient(circle, rgba(240,122,32,.22), transparent 65%); }
+  .fcol, .fsteps { position: relative; z-index: 1; }
+  .fbadge { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .fh { font-size: 30px; margin-bottom: 14px; }
+  .fdesc { font-size: 15.5px; color: #aeb8c7; line-height: 1.6; margin: 0 0 24px; }
+  .fsteps { display: flex; flex-direction: column; gap: 12px; }
+  .fstep { display: flex; gap: 14px; align-items: flex-start; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 16px 18px; }
+  .fn { width: 30px; height: 30px; border-radius: 8px; background: var(--orange); color: #fff; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; flex: none; }
+  .fstep b { display: block; font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 15px; }
+  .fstep span { font-size: 13px; color: #aeb8c7; }
+
+  /* cta */
+  .cta { text-align: center; } .cta h2 { font-size: 38px; margin-bottom: 14px; } .cta .ctas { justify-content: center; margin-top: 26px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .grid4 { grid-template-columns: repeat(2, 1fr); }
+    .feature { grid-template-columns: 1fr; gap: 32px; padding: 36px; }
+    h1 { font-size: 42px; }
+  }
+  @media (max-width: 620px) {
+    .container { padding: 0 20px; }
+    .sec { padding: 56px 0; }
+    .hero { padding-bottom: 56px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+    .hsub, .lead { font-size: 16px; }
+    .ctas { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-ghost { text-align: center; }
+    .grid2 { grid-template-columns: 1fr; }
+    .grid4 { grid-template-columns: 1fr; }
+    .acard { flex-direction: column; gap: 14px; }
+    .feature { padding: 28px 22px; }
+    .fh { font-size: 24px; }
+    .cta h2 { font-size: 29px; }
+  }
+</style>

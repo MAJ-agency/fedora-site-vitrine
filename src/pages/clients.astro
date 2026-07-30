@@ -1,0 +1,128 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const logos = ["FFSA", "FFJudo", "FFTennis", "FFDanse", "FFHand", "FFVolley", "FFRugby", "FFNat"];
+const stats = [
+  { v: "12", k: "fédérations accompagnées" },
+  { v: "1 400+", k: "clubs affiliés" },
+  { v: "350 000", k: "licences gérées" },
+];
+const cases = [
+  { org: "Fédération Française — Sports de combat", quote: "On a remplacé quatre outils et des dizaines de tableurs par une seule plateforme. Le staff pilote en temps réel.", who: "Responsable licences", m1: ["−1 j", "de travail admin / semaine"], m2: ["+8 %", "de réaffiliations"] },
+  { org: "Ligue régionale — Sports collectifs", quote: "Les reversements aux comités et aux clubs se font tout seuls. On a repris la main sur nos données et notre conformité.", who: "Directeur administratif", m1: ["100 %", "des flux tracés"], m2: ["< 24 h", "de délai de support"] },
+];
+const ck = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#F07A20" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>`;
+---
+
+<Layout title="Clients — Fedora" description="Des fédérations et ligues sportives digitalisent leur gestion avec Fedora.">
+  <section class="hero">
+    <Nav />
+    <div class="container hero-body">
+      <div class="eyebrow">Clients</div>
+      <h1>Ils digitalisent leur fédération avec Fedora<span class="dot">.</span></h1>
+      <p class="hsub">Des fédérations, ligues et comités qui ont repris la main sur leurs licences, leurs finances et leurs données.</p>
+      <div class="logos">
+        {logos.map((l) => <span class="logo">{l}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light">
+    <div class="container">
+      <div class="stats">
+        {stats.map((s) => <div class="stat"><b>{s.v}</b><span>{s.k}</span></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      <div class="eyebrow2 center">Témoignages</div>
+      <h2 class="center">Ce qui change, concrètement.</h2>
+      <div class="cases">
+        {cases.map((c) => (
+          <div class="case">
+            <div class="org">{c.org}</div>
+            <p class="q">« {c.quote} »</p>
+            <div class="who">{c.who}</div>
+            <div class="metrics">
+              <div><b>{c.m1[0]}</b><span>{c.m1[1]}</span></div>
+              <div><b>{c.m2[0]}</b><span>{c.m2[1]}</span></div>
+            </div>
+            <a class="rlink" href="#">Lire le témoignage →</a>
+          </div>
+        ))}
+      </div>
+      <p class="note">Exemples illustratifs — les références clients seront affichées avec leur accord.</p>
+    </div>
+  </section>
+
+  <section class="sec dark finalcta">
+    <div class="container center">
+      <h2>Et si la prochaine, c'était la vôtre ?</h2>
+      <p class="lead center">Voyons ensemble ce que Fedora ferait pour votre fédération.</p>
+      <div class="ctas center"><a class="btn-primary" href="/demo">Demander une démo</a><a class="btn-ghost" href="/tarifs">Voir les tarifs</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .sec { padding: 88px 0; }
+  .sec.light { background: var(--cloud); }
+  .dark { background: var(--navy); color: #fff; }
+  h2 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 34px; line-height: 1.1; letter-spacing: -.02em; margin: 0; }
+  .eyebrow2 { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  .lead { font-size: 17px; line-height: 1.6; color: var(--muted); } .dark .lead { color: #aeb8c7; }
+  .center { text-align: center; } .center.lead, .lead.center { margin: 0 auto; max-width: 620px; }
+  .btn-primary { display: inline-block; background: var(--orange); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 12px; text-decoration: none; }
+  .btn-ghost { display: inline-block; border: 1px solid rgba(255,255,255,.3); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 24px; border-radius: 12px; text-decoration: none; }
+
+  .hero { position: relative; background: var(--navy); color: #fff; padding: 0 0 72px; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; opacity: .7; }
+  .hero::after { content: ""; position: absolute; width: 760px; height: 760px; right: -200px; top: -300px; background: radial-gradient(circle, rgba(240,122,32,.16), transparent 62%); }
+  .hero-body { position: relative; z-index: 1; padding-top: 40px; }
+  .eyebrow { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  h1 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 48px; line-height: 1.05; letter-spacing: -.02em; margin: 0 0 16px; max-width: 780px; }
+  h1 .dot { color: var(--orange); }
+  .hsub { font-size: 18px; line-height: 1.58; color: #aeb8c7; max-width: 600px; margin: 0 0 34px; }
+  .logos { display: flex; flex-wrap: wrap; gap: 12px; }
+  .logo { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 15px; color: #c7d2e0; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 10px 18px; border-radius: 10px; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .stat { text-align: center; }
+  .stat b { display: block; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -.02em; }
+  .stat span { font-size: 13.5px; color: var(--muted); }
+
+  .cases { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+  .case { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+  .case .org { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  .case .q { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 20px; line-height: 1.35; margin: 0 0 14px; }
+  .case .who { font-size: 14px; color: var(--muted); }
+  .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .metrics b { display: block; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 26px; color: var(--orange); }
+  .metrics span { font-size: 12.5px; color: var(--muted); }
+  .rlink { font-weight: 600; font-size: 14px; color: var(--navy); text-decoration: none; }
+  .note { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 30px; }
+
+  .finalcta { text-align: center; } .finalcta h2 { font-size: 38px; margin-bottom: 14px; } .finalcta .ctas { justify-content: center; margin-top: 26px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 760px) {
+    .cases { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 620px) {
+    .container { padding: 0 20px; }
+    .sec { padding: 56px 0; }
+    .hero { padding-bottom: 56px; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+    .stats { grid-template-columns: 1fr; gap: 26px; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .finalcta h2 { font-size: 29px; }
+  }
+</style>

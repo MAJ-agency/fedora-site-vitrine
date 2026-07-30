@@ -1,0 +1,228 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { MODULES } from "../../data/modules.js";
+
+const socle = [
+  { t: "Prise & gestion des licences", d: "Parcours de licence personnalisables, questionnaires santé, certificats médicaux, familles et disciplines." },
+  { t: "Affiliation & réaffiliation", d: "Le cycle d'affiliation des clubs et structures, du dossier à la validation, en ligne." },
+  { t: "Paiements multi-canaux", d: "CB, SEPA, chèque et espèces — encaissements centralisés et rapprochés automatiquement." },
+  { t: "Finances & reversements", d: "Quote-parts calculées et réparties seules entre chaque échelon de la structure." },
+  { t: "Statistiques & exports", d: "Tableaux de bord temps réel, indicateurs et exports institutionnels prêts à diffuser." },
+];
+
+const moduleSlugs = ["formations", "competitions", "app-mobile", "planning", "ged"];
+const platform = [
+  { slug: "securite", name: "Sécurité & souveraineté", d: "2FA, RBAC, hébergement HDS 100 % français, option SecNumCloud et audit continu." },
+  { slug: "integrations", name: "Intégrations & API", d: "REST, Webhooks, clés API sécurisées — Lemonway, HelloAsso, Zoho, Salesforce." },
+];
+
+const espaces = [
+  { l: "Fédéral", d: "Pilotage global du réseau" },
+  { l: "Ligue & Comité", d: "Échelon régional & départemental" },
+  { l: "Club", d: "Adhérents, cotisations, inscriptions" },
+  { l: "Licencié", d: "Licence numérique & app mobile" },
+];
+
+const ck = (i) => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${i}</svg>`;
+const check = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#F07A20" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>`;
+---
+
+<Layout title="Produit — Fedora" description="Le socle de gestion des licences, les modules de croissance et la plateforme souveraine : toute votre fédération dans un seul outil.">
+  <section class="hero">
+    <Nav />
+    <div class="container hero-body">
+      <div class="eyebrow">La plateforme</div>
+      <h1>Toute votre fédération, dans un seul outil<span class="dot">.</span></h1>
+      <p class="hsub">Un socle solide pour gérer vos licences et vos finances, des modules à activer pour grandir, et une plateforme souveraine pour tout sécuriser.</p>
+      <div class="ctas">
+        <a class="btn-primary" href="/demo">Demander une démo</a>
+        <a class="btn-ghost" href="/tarifs">Voir les tarifs</a>
+      </div>
+      <div class="pillbar">
+        <a href="#socle" class="pb">Le socle</a>
+        <a href="#modules" class="pb">Les modules</a>
+        <a href="#plateforme" class="pb">La plateforme</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCLE -->
+  <section id="socle" class="sec">
+    <div class="container">
+      <div class="split">
+        <div class="splitcol">
+          <div class="eyebrow2">Le socle · Gestion des licences</div>
+          <h2>La base incluse dès le premier jour.</h2>
+          <p class="lead">Licences, affiliation, paiements, reversements et statistiques : le cœur du métier fédéral, prêt à l'emploi.</p>
+          <a class="tlink" href="/produit/socle">Explorer le socle en détail →</a>
+        </div>
+        <div class="splitcol">
+          <div class="socle-list">
+            {socle.map((s) => (
+              <div class="sl">
+                <span class="slc" set:html={check} />
+                <div><div class="slt">{s.t}</div><div class="sld">{s.d}</div></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section id="modules" class="sec cloud">
+    <div class="container">
+      <div class="eyebrow2 center">Les modules · Croissance</div>
+      <h2 class="center">Activez ce dont vous avez besoin, quand vous en avez besoin.</h2>
+      <p class="lead center mb">Chaque module s'ajoute au socle sans rien réinstaller. Vous ne payez que ce que vous activez.</p>
+      <div class="modgrid">
+        {moduleSlugs.map((slug) => {
+          const m = MODULES[slug];
+          return (
+            <a class="modcard" href={`/produit/${slug}`}>
+              <span class="ib" set:html={ck(m.features[0].icon)} />
+              <span class="mtag">Activable</span>
+              <h3>{m.name}</h3>
+              <p>{m.sub}</p>
+              <span class="more">Découvrir →</span>
+            </a>
+          );
+        })}
+        <a class="modcard ghost" href="/tarifs">
+          <h3>Un besoin sur-mesure ?</h3>
+          <p>Les modules spécifiques à votre discipline se développent sur devis, sur la même plateforme.</p>
+          <span class="more">Parler à un expert →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATEFORME -->
+  <section id="plateforme" class="sec">
+    <div class="container">
+      <div class="eyebrow2 center">La plateforme · Socle transverse</div>
+      <h2 class="center">Un même socle pour tous vos acteurs.</h2>
+      <p class="lead center mb">Des espaces dédiés à chaque échelon, une sécurité de niveau institutionnel et une ouverture totale.</p>
+
+      <div class="espaces">
+        {espaces.map((e) => (
+          <div class="esp"><div class="espl">{e.l}</div><div class="espd">{e.d}</div></div>
+        ))}
+      </div>
+
+      <div class="grid2">
+        {platform.map((p) => (
+          <a class="pcard" href={`/produit/${p.slug}`}>
+            <h3>{p.name}</h3>
+            <p>{p.d}</p>
+            <span class="more">En savoir plus →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec navy cta">
+    <div class="container center">
+      <h2>Voyons la plateforme sur vos cas d'usage.</h2>
+      <p class="lead center">Une démo adaptée à votre fédération, et un chiffrage selon votre volume de licences.</p>
+      <div class="ctas center"><a class="btn-primary" href="/demo">Demander une démo</a><a class="btn-ghost" href="/tarifs">Voir les tarifs</a></div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .sec { padding: 90px 0; }
+  .sec.cloud { background: var(--cloud); }
+  .sec.navy { background: var(--navy); color: #fff; }
+  h2 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 34px; line-height: 1.1; letter-spacing: -.02em; margin: 0; }
+  .eyebrow2 { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  .lead { font-size: 17px; line-height: 1.6; color: var(--muted); }
+  .sec.navy .lead { color: #9fb0c7; }
+  .center { text-align: center; }
+  .center.lead, .lead.center { margin-left: auto; margin-right: auto; max-width: 640px; }
+  .mb { margin-bottom: 48px; }
+  .btn-primary { display: inline-block; background: var(--orange); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 12px; text-decoration: none; }
+  .btn-ghost { display: inline-block; border: 1px solid rgba(255,255,255,.3); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 24px; border-radius: 12px; text-decoration: none; }
+  .ib { width: 46px; height: 46px; border-radius: 12px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; }
+  .more { font-weight: 600; font-size: 14px; color: var(--orange); }
+
+  /* hero */
+  .hero { position: relative; background: var(--navy); color: #fff; padding: 0 0 80px; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; opacity: .7; }
+  .hero::after { content: ""; position: absolute; width: 760px; height: 760px; right: -200px; top: -300px; background: radial-gradient(circle, rgba(240,122,32,.18), transparent 62%); }
+  .hero-body { position: relative; z-index: 1; padding-top: 44px; }
+  .eyebrow { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+  h1 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 50px; line-height: 1.04; letter-spacing: -.02em; margin: 0 0 18px; max-width: 780px; }
+  h1 .dot { color: var(--orange); }
+  .hsub { font-size: 18px; line-height: 1.58; color: #aeb8c7; max-width: 620px; margin: 0 0 28px; }
+  .ctas { display: flex; gap: 14px; }
+  .pillbar { display: flex; gap: 10px; margin-top: 34px; }
+  .pb { font-size: 13.5px; font-weight: 500; color: #c7d2e0; border: 1px solid rgba(255,255,255,.14); padding: 9px 16px; border-radius: 999px; text-decoration: none; transition: background .15s, border-color .15s; }
+  .pb:hover { background: rgba(240,122,32,.14); border-color: rgba(240,122,32,.5); color: #fff; }
+
+  /* socle split */
+  .split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 54px; align-items: center; }
+  .splitcol h2 { margin-bottom: 14px; }
+  .splitcol .lead { margin: 0 0 20px; }
+  .tlink { font-weight: 600; font-size: 15px; color: var(--navy); text-decoration: none; border-bottom: 2px solid var(--orange); padding-bottom: 2px; }
+  .socle-list { display: flex; flex-direction: column; gap: 6px; }
+  .sl { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+  .slc { width: 34px; height: 34px; border-radius: 9px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; flex: none; }
+  .slt { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 15.5px; }
+  .sld { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin-top: 3px; }
+
+  /* modules grid */
+  .modgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .modcard { position: relative; display: block; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 28px; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s; }
+  .modcard:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -24px rgba(13,30,53,.3); }
+  .modcard h3 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 19px; margin: 16px 0 8px; }
+  .modcard p { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0 0 16px; }
+  .mtag { position: absolute; top: 26px; right: 26px; font-size: 9.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--orange); background: var(--orange-soft); padding: 4px 9px; border-radius: 999px; }
+  .modcard.ghost { background: var(--cloud); border-style: dashed; display: flex; flex-direction: column; justify-content: center; }
+  .modcard.ghost h3 { margin-top: 0; }
+
+  /* plateforme */
+  .espaces { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 26px; }
+  .esp { background: var(--cloud); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .espl { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 16px; }
+  .espd { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .pcard { display: block; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 28px; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s; }
+  .pcard:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -24px rgba(13,30,53,.3); }
+  .pcard h3 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 20px; margin: 0 0 8px; }
+  .pcard p { font-size: 14px; color: var(--muted); line-height: 1.5; margin: 0 0 14px; }
+
+  /* cta */
+  .cta { text-align: center; } .cta h2 { font-size: 38px; margin-bottom: 14px; } .cta .ctas { justify-content: center; margin-top: 26px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .split { grid-template-columns: 1fr; gap: 34px; }
+    .modgrid { grid-template-columns: repeat(2, 1fr); }
+    .espaces { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 42px; }
+  }
+  @media (max-width: 620px) {
+    .container { padding: 0 20px; }
+    .sec { padding: 56px 0; }
+    .hero { padding-bottom: 56px; }
+    h1 { font-size: 33px; }
+    h2 { font-size: 26px; }
+    .hsub, .lead { font-size: 16px; }
+    .ctas { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-ghost { text-align: center; }
+    .pillbar { flex-wrap: wrap; }
+    .modgrid { grid-template-columns: 1fr; }
+    .espaces { grid-template-columns: 1fr; }
+    .grid2 { grid-template-columns: 1fr; }
+    .cta h2 { font-size: 29px; }
+  }
+</style>

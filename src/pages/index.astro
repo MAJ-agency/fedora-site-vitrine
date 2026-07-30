@@ -1,0 +1,416 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const personas = [
+  {
+    title: "Fédérations",
+    desc: "Pilotez tout votre réseau, du siège au terrain : reversements, conformité, exports institutionnels.",
+    href: "/solutions/federations",
+    icon: `<path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>`,
+  },
+  {
+    title: "Clubs",
+    desc: "Simplifiez la vie de vos bénévoles : inscriptions, cotisations et membres, sans papier ni Excel.",
+    href: "/solutions/clubs",
+    icon: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>`,
+  },
+  {
+    title: "Licenciés",
+    desc: "Leur licence numérique, leur QR code et leur club, toujours dans la poche via l'app mobile.",
+    href: "/solutions/licencies",
+    icon: `<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>`,
+  },
+];
+
+const pillars = [
+  {
+    verb: "Digitalisez",
+    desc: "Dématérialisez et centralisez toute votre gestion.",
+    items: ["Prise de licence en ligne", "Affiliation & réaffiliation", "Registre des adhérents", "Certificats médicaux"],
+  },
+  {
+    verb: "Pilotez",
+    desc: "Gérez et décidez au quotidien, sur des chiffres à jour.",
+    items: ["Finances & reversements", "Statistiques & BI", "Conformité & exports", "Sécurité & souveraineté"],
+  },
+  {
+    verb: "Développez",
+    desc: "Faites grandir votre réseau et vos pratiquants.",
+    items: ["Espace club & inscriptions", "App mobile licencié", "Formations & compétitions", "Communication"],
+  },
+];
+
+const modules = [
+  { name: "Gestion des licences", desc: "Parcours personnalisables", core: true, icon: `<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/>` },
+  { name: "Affiliation", desc: "Clubs & structures", core: true, icon: `<path d="M3 21h18M5 21V7l7-4 7 4v14"/>` },
+  { name: "Finances & paiements", desc: "SEPA, CB, reversements", core: true, icon: `<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>` },
+  { name: "Statistiques", desc: "Dashboards & exports", core: true, icon: `<path d="M3 3v18h18M7 15l4-4 3 3 5-6"/>` },
+  { name: "Formations", desc: "Sessions, diplômes", core: false, icon: `<path d="M22 10L12 5 2 10l10 5 10-5zM6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/>` },
+  { name: "Compétitions", desc: "Calendrier, classements", core: false, icon: `<path d="M6 9V4h12v5a6 6 0 0 1-12 0zM9 21h6M12 15v6"/>` },
+  { name: "App mobile", desc: "Licence numérique & QR", core: false, icon: `<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>` },
+  { name: "Planning", desc: "Créneaux & réservations", core: false, icon: `<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>` },
+  { name: "GED", desc: "Documents & signatures", core: false, icon: `<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6"/>` },
+  { name: "Élections & votes", desc: "AG dématérialisées", core: false, icon: `<path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>` },
+];
+
+const secu = [
+  { t: "2FA & RBAC", d: "Double authentification, droits par échelon" },
+  { t: "Hébergement HDS", d: "100 % français, certifié, sur 2 sites" },
+  { t: "Option SecNumCloud", d: "Zone qualifiée ANSSI" },
+  { t: "Audit continu", d: "Surveillance externe certifiée" },
+];
+---
+
+<Layout>
+  <!-- HERO -->
+  <section class="hero">
+    <Nav />
+    <div class="container hero-body">
+      <div class="grid">
+        <div>
+          <div class="eyebrow"><span class="lv"></span> Pilotage en temps réel</div>
+          <h1>Digitalisez et pilotez votre fédération, en temps réel<span class="dot">.</span></h1>
+          <p class="sub">
+            Centralisez vos données, automatisez l'affiliation, les licences et
+            les finances, et décidez sur des chiffres à jour à la seconde. Toute
+            votre fédération, dans un seul poste de pilotage.
+          </p>
+          <div class="ctas">
+            <a class="btn-primary" href="/demo">Demander une démo</a>
+            <a class="btn-ghost" href="/produit">Explorer la plateforme</a>
+          </div>
+          <div class="microcopy">
+            <span class="ok">✔</span> Déploiement accompagné &nbsp;·&nbsp; hébergement souverain (HDS)
+          </div>
+          <div class="chips">
+            <span class="chip active">Je pilote une fédération</span>
+            <span class="chip">Je gère un club</span>
+            <span class="chip">Je suis licencié</span>
+          </div>
+        </div>
+
+        <div class="cockpit">
+          <div class="ck-head">
+            <span class="t">Poste de pilotage · Saison 2025-26</span>
+            <span class="ck-live"><i></i> En direct</span>
+          </div>
+          <div class="ck-chartwrap">
+            <div class="cl"><span>Licences délivrées</span><b>12 480 <em>▲ 8,2%</em></b></div>
+            <svg class="area" viewBox="0 0 340 84" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="og" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#F07A20" stop-opacity=".42"></stop>
+                  <stop offset="1" stop-color="#F07A20" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              <path d="M0,70 L38,62 L76,66 L114,48 L152,52 L190,38 L228,42 L266,22 L304,18 L340,9 L340,84 L0,84 Z" fill="url(#og)"></path>
+              <path d="M0,70 L38,62 L76,66 L114,48 L152,52 L190,38 L228,42 L266,22 L304,18 L340,9" fill="none" stroke="#F07A20" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="ck-kpis">
+            <div class="kpi"><span>Clubs affiliés</span><b>342</b><em class="up">▲ 12</em></div>
+            <div class="kpi"><span>Taux paiement</span><b>94%</b><em class="up">▲ 3,1%</em></div>
+            <div class="kpi"><span>Recettes</span><b>1,24M€</b><em class="n">saison</em></div>
+          </div>
+          <div class="ck-feed">
+            <div class="fd"><i class="g"></i> Affiliation validée · <b>AS Ploërmel</b><span class="tm">2 min</span></div>
+            <div class="fd"><i class="o"></i> Licence émise · <b>Judo Club Rennes</b><span class="tm">4 min</span></div>
+            <div class="fd"><i class="g"></i> Paiement reçu · <b>1 240 €</b><span class="tm">6 min</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREUVE SOCIALE -->
+  <section class="sec trust">
+    <div class="container">
+      <p class="trustlabel">Ils digitalisent déjà leur fédération avec Fedora</p>
+      <div class="stats">
+        <div class="stat"><b>12</b><span>fédérations accompagnées</span></div>
+        <div class="stat"><b>1 400+</b><span>clubs affiliés</span></div>
+        <div class="stat"><b>350 000</b><span>licences gérées</span></div>
+        <div class="stat"><b>100 %</b><span>hébergé en France (HDS)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAS -->
+  <section class="sec cloud">
+    <div class="container">
+      <div class="eyebrow2 center">Une porte d'entrée pour chacun</div>
+      <h2 class="center">Fedora, pour chaque acteur de votre sport.</h2>
+      <p class="lead2 center mb">La profondeur pour le staff fédéral, la simplicité pour les bénévoles, le mobile pour les licenciés.</p>
+      <div class="grid3">
+        {
+          personas.map((p) => (
+            <a class="pcard" href={p.href}>
+              <span class="ib"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={p.icon} /></span>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+              <span class="more">Découvrir →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- MOJO -->
+  <section class="sec">
+    <div class="container">
+      <div class="eyebrow2 center">La plateforme complète</div>
+      <h2 class="center">Digitalisez, pilotez, développez.</h2>
+      <p class="lead2 center mb">Trois temps, une seule plateforme — pour couvrir tout le cycle de vie de votre fédération.</p>
+      <div class="grid3">
+        {
+          pillars.map((p, i) => (
+            <div class="pillar">
+              <div class="pnum">{`0${i + 1}`}</div>
+              <h3>{p.verb}</h3>
+              <p class="pd">{p.desc}</p>
+              <ul>
+                {p.items.map((it) => (
+                  <li>
+                    <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg>
+                    {it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section class="sec cloud">
+    <div class="container">
+      <div class="eyebrow2 center">Une plateforme modulaire</div>
+      <h2 class="center">Le socle, plus tous vos modules.</h2>
+      <p class="lead2 center mb">Commencez par la gestion des licences, activez les modules de croissance quand vous en avez besoin.</p>
+      <div class="modgrid">
+        {
+          modules.map((m) => (
+            <div class="mod">
+              <span class="ib"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={m.icon} /></span>
+              <div class="mtxt">
+                <div class="mname">
+                  {m.name}
+                  {!m.core && <span class="tag">Activable</span>}
+                </div>
+                <div class="mdesc">{m.desc}</div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMOIGNAGE -->
+  <section class="sec navy">
+    <div class="container quotewrap">
+      <div class="eyebrow2 center">Ils gagnent du temps</div>
+      <div class="quote">
+        « On a remplacé quatre outils et des dizaines de tableurs par une seule
+        plateforme. Le staff pilote en temps réel, les clubs s'y retrouvent enfin,
+        et nous avons repris la main sur nos données. »
+      </div>
+      <div class="who"><b>Responsable licences</b> — Fédération sportive · 45 000 licenciés</div>
+      <div class="impact">
+        <div><b>−1 j</b><span>de travail administratif par semaine</span></div>
+        <div><b>+8 %</b><span>de réaffiliations la 1<sup>re</sup> saison</span></div>
+        <div><b>&lt; 24 h</b><span>de délai de support</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITE -->
+  <section class="sec">
+    <div class="container">
+      <div class="eyebrow2 center">Sécurité & souveraineté</div>
+      <h2 class="center">Sécurisé, souverain, 100 % français.</h2>
+      <p class="lead2 center mb">Un niveau d'exigence à la hauteur d'une institution — vos données restent en France.</p>
+      <div class="grid4">
+        {
+          secu.map((s) => (
+            <div class="scard">
+              <span class="ib"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z" /><path d="M9.5 12l2 2 3.5-4" /></svg></span>
+              <h4>{s.t}</h4>
+              <p>{s.d}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec navy cta">
+    <div class="container center">
+      <h2>Prêt à digitaliser votre fédération ?</h2>
+      <p class="lead2 center">Une démo sur vos vrais cas d'usage, et un chiffrage adapté à votre volume de licences.</p>
+      <div class="ctas center">
+        <a class="btn-primary" href="/demo">Demander une démo</a>
+        <a class="btn-ghost" href="/tarifs">Voir les tarifs</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; background: var(--navy); color: #fff; padding: 0 0 84px; overflow: hidden; }
+  .hero-body { padding-top: 44px; }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; opacity: .7; }
+  .hero::after { content: ""; position: absolute; width: 720px; height: 720px; right: -180px; top: -260px; background: radial-gradient(circle, rgba(240,122,32,.2), transparent 62%); pointer-events: none; }
+  .grid { position: relative; z-index: 1; }
+  .grid { display: grid; grid-template-columns: 1fr 1.02fr; gap: 44px; align-items: center; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 9px; font-weight: 600; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 18px; }
+  .eyebrow .lv { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(52,211,153,.18); }
+  h1 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 50px; line-height: 1.04; letter-spacing: -.02em; margin: 0 0 20px; }
+  h1 .dot { color: var(--orange); }
+  .sub { font-size: 17px; line-height: 1.58; color: #9fb0c7; max-width: 540px; margin: 0 0 28px; }
+  .ctas { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .btn-primary { background: var(--orange); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 12px; text-decoration: none; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,.3); color: #fff; font-weight: 600; font-size: 16px; padding: 15px 24px; border-radius: 12px; text-decoration: none; }
+  .microcopy { font-size: 13.5px; color: #9fb0c7; margin-bottom: 32px; }
+  .microcopy .ok { color: var(--mint); }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { font-size: 13.5px; font-weight: 500; color: #c7d2e0; border: 1px solid rgba(255,255,255,.1); padding: 9px 15px; border-radius: 999px; }
+  .chip.active { background: rgba(240,122,32,.14); border-color: rgba(240,122,32,.5); color: #fff; }
+
+  /* cockpit */
+  .cockpit { background: linear-gradient(180deg, #16305a, #122444); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 20px; box-shadow: 0 40px 80px -24px rgba(0,0,0,.6); }
+  .ck-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .ck-head .t { font-weight: 600; font-size: 14px; }
+  .ck-live { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; color: var(--mint); background: rgba(52,211,153,.12); border: 1px solid rgba(52,211,153,.3); padding: 5px 10px; border-radius: 999px; }
+  .ck-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); display: inline-block; }
+  .ck-chartwrap { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; padding: 14px 14px 0; margin-bottom: 14px; }
+  .ck-chartwrap .cl { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .ck-chartwrap .cl span { font-size: 12.5px; color: #9fb0c7; }
+  .ck-chartwrap .cl b { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 15px; }
+  .ck-chartwrap .cl em { font-style: normal; color: var(--mint); font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 12.5px; margin-left: 6px; }
+  .area { width: 100%; height: 84px; display: block; }
+  .ck-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+  .kpi { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 12px 13px; }
+  .kpi span { font-size: 11.5px; color: #9fb0c7; display: block; margin-bottom: 6px; }
+  .kpi b { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 20px; letter-spacing: -.02em; }
+  .kpi em { font-style: normal; display: block; font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; margin-top: 4px; }
+  .kpi em.up { color: var(--mint); }
+  .kpi em.n { color: #9fb0c7; }
+  .ck-feed { display: flex; flex-direction: column; }
+  .fd { display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: #c7d2e0; padding: 8px 4px; border-top: 1px solid rgba(255,255,255,.06); }
+  .fd i { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+  .fd i.g { background: var(--mint); }
+  .fd i.o { background: var(--orange); }
+  .fd b { color: #fff; font-weight: 600; }
+  .fd .tm { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 11px; color: #9fb0c7; }
+
+  /* ---------- SECTIONS COMMUNES ---------- */
+  .sec { padding: 88px 0; }
+  .sec.cloud { background: var(--cloud); }
+  .sec.navy { background: var(--navy); color: #fff; }
+  .eyebrow2 { font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  h2 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 34px; line-height: 1.1; letter-spacing: -.02em; margin: 0; }
+  .lead2 { font-size: 17px; line-height: 1.6; color: var(--muted); }
+  .sec.navy .lead2 { color: #9fb0c7; }
+  .center { text-align: center; }
+  .center.lead2, .lead2.center { margin-left: auto; margin-right: auto; max-width: 640px; }
+  .mb { margin-bottom: 48px; }
+  .ib { width: 48px; height: 48px; border-radius: 12px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; }
+  .ib svg { width: 26px; height: 26px; stroke: var(--orange); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* trust */
+  .trust { padding: 56px 0; }
+  .trustlabel { text-align: center; font-size: 14px; color: var(--muted); margin: 0 0 36px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .stat { text-align: center; }
+  .stat b { display: block; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -.02em; }
+  .stat span { font-size: 13.5px; color: var(--muted); }
+
+  /* personas */
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .pcard { display: block; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 30px; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s; }
+  .pcard:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -24px rgba(13,30,53,.3); }
+  .pcard h3 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 21px; margin: 18px 0 8px; }
+  .pcard p { font-size: 14.5px; color: var(--muted); line-height: 1.5; margin: 0 0 16px; }
+  .pcard .more { font-weight: 600; font-size: 14px; color: var(--orange); }
+
+  /* mojo pillars */
+  .pillar { padding: 4px; }
+  .pnum { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 15px; color: var(--orange); margin-bottom: 12px; }
+  .pillar h3 { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 26px; margin: 0 0 6px; }
+  .pd { font-size: 15px; color: var(--muted); margin: 0 0 18px; }
+  .pillar ul { list-style: none; margin: 0; padding: 0; }
+  .pillar li { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; padding: 8px 0; border-top: 1px solid var(--line); }
+  .pillar li svg { width: 18px; height: 18px; stroke: var(--orange); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+  /* modules */
+  .modgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .mod { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .mod .ib { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 14px; }
+  .mod .ib svg { width: 22px; height: 22px; }
+  .mname { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 9.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--orange); background: var(--orange-soft); padding: 3px 7px; border-radius: 999px; }
+  .mdesc { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+
+  /* temoignage */
+  .quotewrap { max-width: 900px; }
+  .quote { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 28px; line-height: 1.35; letter-spacing: -.01em; text-align: center; margin: 8px 0 22px; }
+  .who { text-align: center; font-size: 14.5px; color: #9fb0c7; }
+  .who b { color: #fff; }
+  .impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1); }
+  .impact div { text-align: center; }
+  .impact b { display: block; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 34px; color: var(--orange); }
+  .impact span { font-size: 13.5px; color: #9fb0c7; }
+  .impact sup { font-size: .6em; }
+
+  /* securite */
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .scard { background: var(--cloud); border-radius: 16px; padding: 26px; }
+  .scard h4 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 16px; margin: 14px 0 7px; }
+  .scard p { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  /* cta */
+  .cta h2 { font-size: 40px; margin-bottom: 14px; }
+  .cta .ctas { justify-content: center; margin-top: 26px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: 1fr; gap: 36px; }
+    h1 { font-size: 42px; }
+    .cockpit { max-width: 480px; }
+    .modgrid { grid-template-columns: repeat(3, 1fr); }
+    .grid4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .container { padding: 0 20px; }
+    .hero { padding-bottom: 56px; }
+    .hero-body { padding-top: 24px; }
+    h1 { font-size: 33px; }
+    .sub { font-size: 15.5px; }
+    .ctas { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-ghost { text-align: center; }
+    .sec { padding: 56px 0; }
+    h2 { font-size: 26px; }
+    .mb { margin-bottom: 32px; }
+    .trust { padding: 44px 0; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+    .stat b { font-size: 32px; }
+    .grid3 { grid-template-columns: 1fr; }
+    .modgrid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .quote { font-size: 21px; }
+    .impact { grid-template-columns: 1fr; gap: 22px; }
+    .grid4 { grid-template-columns: 1fr; }
+    .cta h2 { font-size: 30px; }
+  }
+</style>

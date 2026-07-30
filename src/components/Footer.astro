@@ -1,0 +1,137 @@
+---
+import Logo from "./Logo.astro";
+
+const cols = [
+  {
+    title: "Produit",
+    links: [
+      { l: "Le socle — Licences", h: "/produit/socle" },
+      { l: "Modules", h: "/produit" },
+      { l: "Sécurité & souveraineté", h: "/produit/securite" },
+      { l: "Intégrations & API", h: "/produit/integrations" },
+      { l: "Tarifs", h: "/tarifs" },
+    ],
+  },
+  {
+    title: "Solutions",
+    links: [
+      { l: "Fédérations", h: "/solutions/federations" },
+      { l: "Ligues & Comités", h: "/solutions/federations" },
+      { l: "Clubs", h: "/solutions/clubs" },
+      { l: "Licenciés", h: "/solutions/licencies" },
+    ],
+  },
+  {
+    title: "Ressources",
+    links: [
+      { l: "Blog", h: "/ressources" },
+      { l: "Guides", h: "/ressources" },
+      { l: "Webinaires", h: "/ressources" },
+      { l: "Témoignages", h: "/clients" },
+      { l: "Centre d'aide", h: "/ressources" },
+    ],
+  },
+  {
+    title: "Entreprise",
+    links: [
+      { l: "À propos", h: "/contact" },
+      { l: "Clients", h: "/clients" },
+      { l: "Sécurité", h: "/produit/securite" },
+      { l: "Nous contacter", h: "/contact" },
+    ],
+  },
+];
+
+const disciplines = ["Football", "Basketball", "Judo", "Danse", "Tennis", "Rugby", "Volleyball", "Natation"];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="top">
+      <div class="brandcol">
+        <Logo light={true} width={120} />
+        <p>La plateforme des fédérations sportives. Digitalisez, pilotez et développez votre fédération.</p>
+      </div>
+      {
+        cols.map((c) => (
+          <div class="col">
+            <h4>{c.title}</h4>
+            <ul>
+              {c.links.map((link) => (
+                <li><a href={link.h}>{link.l}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="seo">
+      <span class="seolabel">Logiciel de gestion par discipline —</span>
+      {disciplines.map((d) => <a href="/solutions/clubs">Club de {d}</a>)}
+    </div>
+
+    <div class="bottom">
+      <span>© 2026 Fedora — by MAJ. Tous droits réservés.</span>
+      <div class="legal">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/confidentialite">Confidentialité</a>
+        <a href="/produit/securite">HDS &amp; sécurité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { background: #0a1626; color: #9fb0c7; padding: 70px 0 34px; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .brandcol p { font-size: 14px; line-height: 1.6; margin: 18px 0 0; max-width: 280px; }
+  .col h4 { font-family: "Gabarito", sans-serif; color: #fff; font-size: 14px; font-weight: 700; margin: 0 0 16px; }
+  .col ul { list-style: none; margin: 0; padding: 0; }
+  .col li { margin-bottom: 10px; }
+  .col a { color: #9fb0c7; text-decoration: none; font-size: 14px; }
+  .col a:hover { color: #fff; }
+  .seo {
+    padding: 26px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+  }
+  .seolabel { color: #6b7891; }
+  .seo a { color: #9fb0c7; text-decoration: none; }
+  .seo a:hover { color: var(--orange); }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    font-size: 13px;
+  }
+  .legal { display: flex; gap: 22px; }
+  .legal a { color: #9fb0c7; text-decoration: none; }
+  .legal a:hover { color: #fff; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .top { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+    .brandcol { grid-column: 1 / -1; }
+  }
+  @media (max-width: 620px) {
+    .footer { padding: 54px 0 28px; }
+    .container { padding: 0 20px; }
+    .top { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+    .brandcol p { max-width: none; }
+    .bottom { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .legal { flex-wrap: wrap; gap: 14px 20px; }
+  }
+</style>

@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* Design tokens Fedora — exposés comme utilitaires Tailwind (bg-navy, text-orange, font-display…) */
+@theme {
+  --color-navy: #0d1e35;
+  --color-navy-soft: #1c2e48;
+  --color-orange: #f07a20;
+  --color-orange-soft: #ffe9d8;
+  --color-cloud: #f5f5f7;
+  --color-muted: #5a6577;
+  --color-line: #e4e5ea;
+  --color-good: #0a9b54;
+  --color-mint: #34d399;
+
+  --font-display: "Gabarito", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Alias courts réutilisés dans les styles scopés des composants */
+:root {
+  --navy: #0d1e35;
+  --navy-soft: #1c2e48;
+  --orange: #f07a20;
+  --orange-soft: #ffe9d8;
+  --cloud: #f5f5f7;
+  --muted: #5a6577;
+  --line: #e4e5ea;
+  --mint: #34d399;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  background: #fff;
+  color: #0d1e35;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
