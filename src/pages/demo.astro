@@ -31,13 +31,15 @@ const volumes = ["Moins de 1 000 licenciés", "1 000 – 5 000", "5 000 – 20 0
           </ul>
         </div>
 
-        <form class="formcard" action="#" method="post">
+        <form class="formcard" name="demande-demo" method="POST" action="/merci" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="demande-demo" />
+          <p class="hp"><label>Ne remplissez pas ce champ : <input name="bot-field" /></label></p>
           <div class="row2">
-            <label>Prénom<input type="text" name="prenom" placeholder="Camille" /></label>
-            <label>Nom<input type="text" name="nom" placeholder="Martin" /></label>
+            <label>Prénom<input type="text" name="prenom" placeholder="Camille" required /></label>
+            <label>Nom<input type="text" name="nom" placeholder="Martin" required /></label>
           </div>
-          <label>Email professionnel<input type="email" name="email" placeholder="camille@ma-federation.fr" /></label>
-          <label>Fédération / structure<input type="text" name="structure" placeholder="Fédération Française de…" /></label>
+          <label>Email professionnel<input type="email" name="email" placeholder="camille@ma-federation.fr" required /></label>
+          <label>Fédération / structure<input type="text" name="structure" placeholder="Fédération Française de…" required /></label>
           <label>Votre rôle<input type="text" name="role" placeholder="Responsable licences, DG, président…" /></label>
           <label>Nombre de licenciés
             <select name="volume">
@@ -83,6 +85,7 @@ const volumes = ["Moins de 1 000 licenciés", "1 000 – 5 000", "5 000 – 20 0
   button { margin-top: 6px; background: var(--orange); color: #fff; font-weight: 600; font-size: 16px; padding: 14px; border: none; border-radius: 11px; cursor: pointer; }
   button:hover { filter: brightness(1.05); }
   .legal { font-size: 12px; color: var(--muted); line-height: 1.5; margin: 4px 0 0; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 880px) {
