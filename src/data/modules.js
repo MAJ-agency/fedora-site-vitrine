@@ -58,7 +58,7 @@ export const MODULES = {
   securite: {
     tag: "Plateforme · Pilotez",
     name: "Sécurité & souveraineté",
-    title: "Vos données, en France, protégées.",
+    title: "Vos données protégées et hébergées en France.",
     sub: "Un niveau d'exigence à la hauteur d'une institution : authentification forte, hébergement souverain HDS et audit continu.",
     features: [
       { t: "2FA & RBAC", d: "Double authentification et gestion fine des rôles par échelon.", icon: `<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>` },
