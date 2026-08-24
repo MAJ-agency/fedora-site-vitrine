@@ -68,14 +68,23 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
           <p class="hsub">Inscriptions, cotisations, licences, membres — tout au même endroit, tout simple. Plus de papier, de tableurs ni de relances manuelles.</p>
           <div class="ctas"><a class="btn-primary" href="/demo">Demander une démo</a><a class="btn-ghost" href="/tarifs">Voir les tarifs</a></div>
         </div>
-        <div class="clubpanel">
-          <div class="cp-head"><div class="cp-logo">AP</div><div><div class="n">AS Ploërmel</div><div class="s">Espace club · saison 2025-26</div></div></div>
-          <div class="cp-stats">
-            <div class="cp-stat"><div class="k">Adhérents</div><div class="v">248 <small>+12</small></div></div>
-            <div class="cp-stat"><div class="k">Encaissé</div><div class="v">8 680 €</div></div>
+        <div class="pulse">
+          <div class="ph">
+            <span class="pclub"><span class="plogo">AP</span> AS Ploërmel</span>
+            <span class="live"><i></i> Cette semaine</span>
           </div>
-          <div class="cp-bar"><div class="lab"><span>Cotisations à jour</span><b>214 / 248</b></div><div class="cp-track"><i></i></div></div>
-          <div class="cp-btn">+ Nouvelle inscription</div>
+
+          <div class="pnum">12<span class="punit">inscriptions</span></div>
+          <div class="plab">reçues en ligne — dont <b>4 un dimanche soir</b></div>
+
+          <div class="pfeed">
+            <div class="pev"><i class="g"></i><span class="pl">Cotisation réglée · <b>Léa M.</b></span><span class="pw">22 h 14</span></div>
+            <div class="pev"><i class="o"></i><span class="pl">Relance envoyée · <b>3 retardataires</b></span><span class="pw">auto</span></div>
+            <div class="pev"><i class="g"></i><span class="pl">Certificat médical reçu · <b>Tom B.</b></span><span class="pw">07 h 40</span></div>
+            <div class="pev"><i class="g"></i><span class="pl">Licence délivrée · <b>Emma R.</b></span><span class="pw">auto</span></div>
+          </div>
+
+          <div class="pfoot">Tout cela s'est fait <b>sans aucune action de votre part</b>.</div>
         </div>
       </div>
     </div>
@@ -259,20 +268,25 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   .hsub { font-size: 21px; line-height: 1.58; color: #aeb8c7; max-width: 520px; margin: 0 0 28px; }
   .ctas { display: flex; gap: 14px; }
 
-  .clubpanel { background: #fff; border-radius: 20px; padding: 22px; box-shadow: 0 40px 80px -24px rgba(0,0,0,.5); color: var(--navy); }
-  .cp-head { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
-  .cp-logo { width: 38px; height: 38px; border-radius: 10px; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 20px; }
-  .cp-head .n { font-weight: 700; font-size: 17px; } .cp-head .s { font-size: 13px; color: var(--muted); }
-  .cp-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
-  .cp-stat { background: var(--cloud); border-radius: 12px; padding: 14px; }
-  .cp-stat .k { font-size: 13px; color: var(--muted); margin-bottom: 5px; }
-  .cp-stat .v { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 26px; }
-  .cp-stat .v small { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; color: var(--good); margin-left: 4px; }
-  .cp-bar { margin-bottom: 16px; }
-  .cp-bar .lab { display: flex; justify-content: space-between; font-size: 13.5px; color: var(--muted); margin-bottom: 6px; } .cp-bar .lab b { color: var(--navy); }
-  .cp-track { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
-  .cp-track i { display: block; height: 100%; width: 86%; background: var(--good); border-radius: 999px; }
-  .cp-btn { text-align: center; background: var(--orange); color: #fff; font-weight: 600; font-size: 16px; padding: 12px; border-radius: 10px; }
+  /* Hero — « le club tourne tout seul » */
+  .pulse { background: linear-gradient(180deg, #16305a, #122444); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 24px; box-shadow: 0 40px 80px -24px rgba(0,0,0,.6); }
+  .ph { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .pclub { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; }
+  .plogo { width: 30px; height: 30px; border-radius: 8px; background: var(--orange); color: #fff; display: flex; align-items: center; justify-content: center; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 13px; }
+  .live { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: var(--mint); background: rgba(52,211,153,.12); border: 1px solid rgba(52,211,153,.3); padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+  .live i { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); }
+  .pnum { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 52px; line-height: 1; letter-spacing: -.02em; display: flex; align-items: baseline; gap: 12px; }
+  .punit { font-family: "Inter", sans-serif; font-weight: 600; font-size: 19px; letter-spacing: 0; color: #c7d2e0; }
+  .plab { font-size: 15px; color: #9fb0c7; margin-top: 8px; }
+  .plab b { color: #fff; font-weight: 600; }
+  .pfeed { margin-top: 22px; display: flex; flex-direction: column; gap: 8px; }
+  .pev { display: flex; align-items: center; gap: 11px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 11px; padding: 11px 13px; font-size: 14.5px; color: #c7d2e0; }
+  .pev i { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .pev i.g { background: var(--mint); } .pev i.o { background: var(--orange); }
+  .pev b { color: #fff; font-weight: 600; }
+  .pev .pw { margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: #9fb0c7; white-space: nowrap; }
+  .pfoot { font-size: 13.5px; color: #9fb0c7; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+  .pfoot b { color: var(--mint); font-weight: 600; }
 
 
 
