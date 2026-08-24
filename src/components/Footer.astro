@@ -21,21 +21,23 @@ const cols = [
       { l: "Licenciés", h: "/solutions/licencies" },
     ],
   },
-  {
-    title: "Ressources",
-    links: [
-      { l: "Blog", h: "/ressources" },
-      { l: "Guides", h: "/ressources" },
-      { l: "Webinaires", h: "/ressources" },
-      { l: "Témoignages", h: "/clients" },
-      { l: "Centre d'aide", h: "/ressources" },
-    ],
-  },
+  // Colonne "Ressources" masquée temporairement (tous ses liens pointaient vers
+  // /ressources et /clients). Les pages existent toujours : décommenter pour rétablir.
+  // {
+  //   title: "Ressources",
+  //   links: [
+  //     { l: "Blog", h: "/ressources" },
+  //     { l: "Guides", h: "/ressources" },
+  //     { l: "Webinaires", h: "/ressources" },
+  //     { l: "Témoignages", h: "/clients" },
+  //     { l: "Centre d'aide", h: "/ressources" },
+  //   ],
+  // },
   {
     title: "Entreprise",
     links: [
       { l: "À propos", h: "/contact" },
-      { l: "Clients", h: "/clients" },
+      // { l: "Clients", h: "/clients" },   // masqué temporairement
       { l: "Sécurité", h: "/produit/securite" },
       { l: "Nous contacter", h: "/contact" },
     ],
@@ -87,7 +89,7 @@ const disciplines = ["Football", "Basketball", "Judo", "Danse", "Tennis", "Rugby
   .container { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
   .top {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
     gap: 32px;
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
