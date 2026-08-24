@@ -1,0 +1,14 @@
+# Normalise les fins de ligne : LF dans le dépôt, quel que soit l'OS d'édition.
+# Évite les diffs fantômes "tout le fichier a changé" entre Windows et WSL/Linux.
+* text=auto eol=lf
+
+# Fichiers binaires : ne jamais toucher aux fins de ligne
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
