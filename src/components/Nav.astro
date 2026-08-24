@@ -145,7 +145,11 @@ const besoins = [
   /* Panneaux méga */
   .mega {
     position: absolute; top: 100%; left: 0; right: 0;
-    padding-top: 12px;
+    /* Pont invisible : la marge négative remonte la zone sensible jusqu'au
+       lien déclencheur (sinon ~23px de vide font retomber le :hover), et le
+       padding la compense pour que le panneau visible ne bouge pas. */
+    margin-top: -32px;
+    padding-top: 44px;
     opacity: 0; visibility: hidden; transform: translateY(-6px);
     transition: opacity .18s ease, transform .18s ease, visibility .18s;
     pointer-events: none; z-index: 60;
