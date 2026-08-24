@@ -3,11 +3,47 @@ import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 
-const enjeux = [
-  { q: "Des données éparpillées entre les échelons", a: "Ligues, comités et clubs travaillent de manière cloisonnée. Fedora unifie tout dans une seule base, à jour en temps réel." },
-  { q: "Des reversements complexes et manuels", a: "Les quote-parts se calculent et remontent automatiquement à chaque niveau. Plus aucun tableur de répartition." },
-  { q: "La conformité et les rapports institutionnels", a: "Exports normés, statistiques officielles, traçabilité — prêts à transmettre à vos tutelles en un clic." },
-  { q: "Deux publics, un seul outil", a: "La profondeur pour vos experts au siège, la simplicité pour les bénévoles des clubs. Chacun son espace." },
+// Les 3 thèmes stratégiques = le mojo Fedora, développé pour l'échelon fédéral.
+const themes = [
+  {
+    verbe: "Digitalisez",
+    sur: "Moderniser et gagner en efficacité",
+    besoin:
+      "Sortir du papier et des tableurs, fluidifier vos processus et faire gagner du temps à tout le réseau — du siège jusqu'au bénévole de club.",
+    features: [
+      { t: "Licences & affiliations en ligne", d: "Des parcours conformes à votre réglementation, de bout en bout." },
+      { t: "Paiements multi-canaux", d: "CB, SEPA, chèque, espèces, Pass'Sport — encaissés et rapprochés." },
+      { t: "Formations & diplômes", d: "Sessions, certifications et recyclages de vos officiels, dématérialisés." },
+      { t: "GED, signatures & votes", d: "Documents signés, assemblées générales et élections en ligne." },
+    ],
+    visuel: "flow",
+  },
+  {
+    verbe: "Pilotez",
+    sur: "Centraliser, analyser, décider",
+    besoin:
+      "Disposer d'une information consolidée et fiable pour piloter votre activité, arbitrer en connaissance de cause et rendre des comptes à vos tutelles.",
+    features: [
+      { t: "Une base unique, du siège au club", d: "Arborescence fédérale complète, chaque échelon sur son périmètre." },
+      { t: "Analyse & aide à la décision", d: "Indicateurs par ligue, comité, club et discipline, saison après saison." },
+      { t: "Finances & reversements", d: "Quote-parts calculées et réparties automatiquement, à l'euro près." },
+      { t: "Conformité & exports institutionnels", d: "Rapports normés et traçabilité, prêts pour vos tutelles." },
+    ],
+    visuel: "kpi",
+  },
+  {
+    verbe: "Développez",
+    sur: "Faire grandir la pratique et le réseau",
+    besoin:
+      "Fidéliser et attirer licenciés et clubs, animer la vie sportive et proposer des outils à la hauteur de leurs attentes.",
+    features: [
+      { t: "Compétitions", d: "Calendrier fédéral, engagements par club et classements officiels." },
+      { t: "Communication ciblée", d: "Informez par échelon, catégorie ou événement, sans intermédiaire." },
+      { t: "App mobile licencié", d: "Licence numérique, QR code, agenda et résultats dans la poche." },
+      { t: "Espace club & inscriptions", d: "Des outils modernes qui simplifient la vie de vos bénévoles." },
+    ],
+    visuel: "mobile",
+  },
 ];
 const benefices = [
   { t: "Pilotage temps réel", d: "Dashboards par ligue, comité et club. Les bons chiffres, à la seconde.", icon: `<path d="M3 3v18h18M7 15l4-4 3 3 5-6"/>` },
@@ -30,6 +66,8 @@ const secu = [
   { t: "Audit continu", d: "Surveillance externe certifiée + détection des vulnérabilités.", icon: `<circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/>` },
 ];
 const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#F07A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${i}</svg>`;
+// Ancres sans accent : "Développez" -> "developpez" (une URL accentuée est fragile).
+const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 ---
 
 <Layout title="Fedora pour les fédérations — Pilotez tout votre réseau" description="Une vue consolidée sur chaque ligue, comité et club. Reversements automatisés, conformité assurée et profondeur pour votre staff fédéral.">
@@ -58,18 +96,84 @@ const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="non
     </div>
   </section>
 
-  <!-- ENJEUX -->
-  <section class="sec light">
+  <!-- INTRO DES 3 THÈMES -->
+  <section class="sec light themes-intro">
     <div class="container">
-      <div class="eyebrow2">Vos enjeux</div>
-      <h2>Quatre défis, quatre réponses.</h2>
-      <div class="enj">
-        {enjeux.map((e, i) => (
-          <div class="enjrow"><div class="no">{`0${i + 1}`}</div><div><div class="q">{e.q}</div><div class="a">{e.a}</div></div></div>
+      <div class="eyebrow2 center">Vos enjeux</div>
+      <h2 class="center">Trois enjeux, une seule plateforme.</h2>
+      <p class="lead center mb">Digitaliser vos processus, piloter votre réseau sur des chiffres fiables, et développer la pratique — Fedora couvre le cycle complet d'une fédération.</p>
+      <div class="tnav">
+        {themes.map((t, i) => (
+          <a class="tnav-item" href={`#${slug(t.verbe)}`}>
+            <span class="tnum">{`0${i + 1}`}</span>
+            <span class="tverbe">{t.verbe}</span>
+            <span class="tsur">{t.sur}</span>
+          </a>
         ))}
       </div>
     </div>
   </section>
+
+  <!-- LES 3 THÈMES DÉVELOPPÉS -->
+  {themes.map((t, i) => (
+    <section class={`sec theme ${i % 2 === 1 ? "light" : ""}`} id={slug(t.verbe)}>
+      <div class="container">
+        <div class={`trow ${i % 2 === 1 ? "rev" : ""}`}>
+          <div class="tcol">
+            <div class="tbadge"><span>{`0${i + 1}`}</span> {t.sur}</div>
+            <h2 class="th2">{t.verbe}<span class="dot">.</span></h2>
+            <p class="lead tbesoin">{t.besoin}</p>
+            <div class="tfeats">
+              {t.features.map((f) => (
+                <div class="tfeat">
+                  <span class="tck"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#F07A20" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"></path></svg></span>
+                  <div><b>{f.t}</b><span>{f.d}</span></div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="tvis">
+            {t.visuel === "flow" && (
+              <div class="vcard">
+                <div class="vhead"><span>Prise de licence en ligne</span><span class="vtag">Sans papier</span></div>
+                <div class="vstep done"><i></i> Choix de la formule <b>Compétition</b></div>
+                <div class="vstep done"><i></i> Questionnaire santé <b>validé</b></div>
+                <div class="vstep done"><i></i> Paiement <b>180,00 €</b></div>
+                <div class="vstep live"><i></i> Licence émise <b>automatiquement</b></div>
+                <div class="vfoot">Délai moyen constaté : <b>3 min</b> au lieu de plusieurs jours</div>
+              </div>
+            )}
+            {t.visuel === "kpi" && (
+              <div class="vcard">
+                <div class="vhead"><span>Tableau de bord fédéral</span><span class="vtag live">● En direct</span></div>
+                <div class="vkpis">
+                  <div><span>Licences</span><b>12 480</b><em>▲ 8,2 %</em></div>
+                  <div><span>Clubs affiliés</span><b>342</b><em>▲ 12</em></div>
+                  <div><span>Recettes</span><b>1,24 M€</b><em>saison</em></div>
+                </div>
+                <svg class="varea" viewBox="0 0 320 72" preserveAspectRatio="none">
+                  <defs><linearGradient id={`tg${i}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F07A20" stop-opacity=".38"></stop><stop offset="1" stop-color="#F07A20" stop-opacity="0"></stop></linearGradient></defs>
+                  <path d="M0,60 L36,52 L72,56 L108,40 L144,46 L180,32 L216,36 L252,20 L288,15 L320,7 L320,72 L0,72 Z" fill={`url(#tg${i})`}></path>
+                  <path d="M0,60 L36,52 L72,56 L108,40 L144,46 L180,32 L216,36 L252,20 L288,15 L320,7" fill="none" stroke="#F07A20" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <div class="vfoot">Filtrable par ligue, comité, club et discipline</div>
+              </div>
+            )}
+            {t.visuel === "mobile" && (
+              <div class="vcard">
+                <div class="vhead"><span>Communication & compétitions</span><span class="vtag">Module</span></div>
+                <div class="vnotif"><span class="vdot"></span><div><b>Convocation — Championnat régional</b><span>Envoyée à 412 licenciés · Ligue Bretagne</span></div></div>
+                <div class="vnotif"><span class="vdot o"></span><div><b>Classement mis à jour</b><span>Publié automatiquement après saisie des résultats</span></div></div>
+                <div class="vnotif"><span class="vdot"></span><div><b>Ouverture des engagements</b><span>Notifiée aux 342 clubs affiliés</span></div></div>
+                <div class="vfoot">Directement dans l'app mobile de vos licenciés</div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
 
   <!-- BENEFICES -->
   <section class="sec">
@@ -223,8 +327,60 @@ const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="non
   .finalcta h2 { font-size: 46px; margin-bottom: 14px; }
   .finalcta .ctas { justify-content: center; margin-top: 26px; }
 
+  /* ---------- LES 3 THÈMES ---------- */
+  .themes-intro .mb { margin-bottom: 40px; }
+  .tnav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .tnav-item { display: block; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px 26px; text-decoration: none; color: inherit; transition: transform .15s, box-shadow .15s, border-color .15s; }
+  .tnav-item:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -24px rgba(13,30,53,.3); border-color: var(--orange); }
+  .tnum { display: block; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 14px; color: var(--orange); margin-bottom: 10px; }
+  .tverbe { display: block; font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -.01em; margin-bottom: 4px; }
+  .tsur { display: block; font-size: 16px; color: var(--muted); line-height: 1.45; }
+
+  .theme { scroll-margin-top: 80px; }
+  .trow { display: grid; grid-template-columns: 1.02fr .98fr; gap: 58px; align-items: center; }
+  .trow.rev .tcol { order: 2; } .trow.rev .tvis { order: 1; }
+  .tbadge { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  .tbadge span { font-family: "JetBrains Mono", monospace; background: var(--orange-soft); padding: 3px 9px; border-radius: 999px; letter-spacing: 0; }
+  .th2 { font-size: 44px; margin-bottom: 14px; }
+  .th2 .dot { color: var(--orange); }
+  .tbesoin { margin: 0 0 26px; }
+  .tfeats { display: flex; flex-direction: column; gap: 14px; }
+  .tfeat { display: flex; gap: 13px; align-items: flex-start; }
+  .tck { width: 30px; height: 30px; border-radius: 9px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; flex: none; }
+  .tfeat b { display: block; font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 17px; }
+  .tfeat span { display: block; font-size: 16px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+
+  /* visuels des thèmes */
+  .vcard { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 26px 54px -30px rgba(13,30,53,.4); }
+  .theme.light .vcard { background: #fff; }
+  .vhead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-weight: 700; font-size: 16px; }
+  .vtag { font-size: 12px; font-weight: 700; color: var(--orange); background: var(--orange-soft); padding: 4px 10px; border-radius: 999px; }
+  .vtag.live { color: var(--good); background: #e6f6ee; }
+  .vstep { display: flex; align-items: center; gap: 11px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 11px; margin-bottom: 9px; font-size: 15.5px; }
+  .vstep i { width: 9px; height: 9px; border-radius: 50%; background: var(--good); flex: none; }
+  .vstep.live { border-color: var(--orange); background: var(--orange-soft); }
+  .vstep.live i { background: var(--orange); }
+  .vstep b { margin-left: auto; font-weight: 700; }
+  .vfoot { font-size: 14px; color: var(--muted); margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--line); }
+  .vfoot b { color: var(--navy); }
+  .vkpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+  .vkpis > div { background: var(--cloud); border-radius: 11px; padding: 12px 13px; }
+  .vkpis span { display: block; font-size: 12.5px; color: var(--muted); margin-bottom: 4px; }
+  .vkpis b { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 19px; }
+  .vkpis em { display: block; font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 600; color: var(--good); margin-top: 3px; }
+  .varea { width: 100%; height: 72px; display: block; }
+  .vnotif { display: flex; gap: 12px; align-items: flex-start; padding: 13px 14px; border: 1px solid var(--line); border-radius: 11px; margin-bottom: 9px; }
+  .vdot { width: 9px; height: 9px; border-radius: 50%; background: var(--good); flex: none; margin-top: 6px; }
+  .vdot.o { background: var(--orange); }
+  .vnotif b { display: block; font-size: 15.5px; font-weight: 700; }
+  .vnotif span { display: block; font-size: 14px; color: var(--muted); margin-top: 2px; }
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 960px) {
+    .tnav { grid-template-columns: 1fr; }
+    .trow { grid-template-columns: 1fr; gap: 34px; }
+    .trow.rev .tcol { order: 1; } .trow.rev .tvis { order: 2; }
+    .th2 { font-size: 36px; }
     .hgrid { grid-template-columns: 1fr; gap: 36px; }
     h1 { font-size: 46px; }
     .revwrap { grid-template-columns: 1fr; gap: 32px; }
@@ -242,5 +398,9 @@ const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="non
     .btn-primary, .btn-ghost { text-align: center; }
     .grid4, .grid3 { grid-template-columns: 1fr; }
     .finalcta h2 { font-size: 33px; }
+    .th2 { font-size: 30px; }
+    .vkpis { grid-template-columns: 1fr; }
+    .tnav-item { padding: 20px; }
+    .tverbe { font-size: 23px; }
   }
 </style>
