@@ -27,6 +27,10 @@
   --muted: #5a6577;
   --line: #e4e5ea;
   --mint: #34d399;
+  --good: #0a9b54;
+
+  /* Largeur max du contenu (container / nav) — un seul endroit à ajuster */
+  --maxw: 1360px;
 }
 
 * { box-sizing: border-box; }

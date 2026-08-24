@@ -29,7 +29,7 @@ import Footer from "../components/Footer.astro";
 </Layout>
 
 <style>
-  .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
   .hero { position: relative; background: var(--navy); color: #fff; padding: 0 0 100px; overflow: hidden; }
   .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; opacity: .7; }
   .hero::after { content: ""; position: absolute; width: 760px; height: 760px; right: -200px; top: -300px; background: radial-gradient(circle, rgba(240,122,32,.18), transparent 62%); }
