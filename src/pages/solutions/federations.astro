@@ -71,7 +71,6 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
         </div>
         <div class="pulse">
           <div class="ph">
-            <span class="pt">Le pouls de votre fédération</span>
             <span class="live"><i></i> En direct</span>
           </div>
 
@@ -262,8 +261,9 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
   /* Hero — « Le pouls du réseau » */
   .pulse { background: linear-gradient(180deg, #16305a, #122444); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 24px; box-shadow: 0 40px 80px -24px rgba(0,0,0,.6); }
-  .ph { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-  .ph .pt { font-weight: 600; font-size: 16px; }
+  /* Titre retiré : le badge reste seul, donc aligné à droite (space-between
+     l'aurait renvoyé à gauche). */
+  .ph { display: flex; justify-content: flex-end; align-items: center; margin-bottom: 16px; }
   .live { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: var(--mint); background: rgba(52,211,153,.12); border: 1px solid rgba(52,211,153,.3); padding: 5px 10px; border-radius: 999px; }
   .live i { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); }
   .pnum { font-family: "Gabarito", sans-serif; font-weight: 800; font-size: 46px; line-height: 1; letter-spacing: -.02em; display: flex; align-items: baseline; gap: 12px; }
