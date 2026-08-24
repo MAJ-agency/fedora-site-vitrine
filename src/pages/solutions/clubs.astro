@@ -12,18 +12,18 @@ const enjeux = [
 const benefices = [
   { t: "Inscriptions en ligne", d: "Vos adhérents s'inscrivent et paient en quelques clics.", icon: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM19 8v6M22 11h-6"/>` },
   { t: "Cotisations & paiements", d: "CB, SEPA, chèque — suivis et relancés automatiquement.", icon: `<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>` },
-  { t: "Base membres à jour", d: "Un annuaire toujours propre, sans double saisie.", icon: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87"/>` },
-  { t: "Zéro courbe d'apprentissage", d: "Prise en main immédiate, même sans être à l'aise avec l'informatique.", icon: `<path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>` },
+  { t: "Base membres à jour", d: "Un annuaire toujours à jour, sans double saisie.", icon: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87"/>` },
+  { t: "Aucune courbe d'apprentissage", d: "Prise en main immédiate, même sans être à l'aise avec l'informatique.", icon: `<path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>` },
 ];
 const steps = [
   { t: "Choix de la formule", d: "L'adhérent sélectionne sa section, sa catégorie, ses options." },
   { t: "Infos & documents", d: "Coordonnées et certificat médical, importés une seule fois." },
   { t: "Paiement en ligne", d: "CB, SEPA ou paiement en plusieurs fois, sécurisé." },
-  { t: "Licence délivrée", d: "La licence est émise automatiquement, dispo dans l'app." },
+  { t: "Licence délivrée", d: "La licence est émise automatiquement, disponible dans l'application." },
 ];
 const modules = [
   { t: "Espace club", d: "Votre tableau de bord : membres, cotisations, échéances.", icon: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>` },
-  { t: "Inscriptions & paiements", d: "Formulaires personnalisés, paiement en ligne, reçus auto.", icon: `<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>` },
+  { t: "Inscriptions & paiements", d: "Formulaires personnalisés, paiement en ligne, reçus automatiques.", icon: `<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>` },
   { t: "Communication", d: "Messages ciblés à vos membres, sans intermédiaire.", icon: `<path d="M4 4h16v4H4zM4 12h10M4 17h7"/>` },
   { t: "Planning", d: "Créneaux, réservations et agenda partagé.", icon: `<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>` },
   { t: "App mobile", d: "Vos membres gardent leur licence et le club en poche.", icon: `<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>` },
@@ -40,9 +40,9 @@ const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="non
         <div>
           <div class="crumb">Solutions <b>›</b> Clubs</div>
           <div class="eyebrow">Pour les bénévoles de club</div>
-          <h1>Gérez votre club sans y passer vos soirées<span class="dot">.</span></h1>
-          <p class="hsub">Inscriptions, cotisations, licences, membres — tout au même endroit, tout simple. Fini le papier, les tableurs et les relances à la main.</p>
-          <div class="ctas"><a class="btn-primary" href="/demo">Essayer gratuitement</a><a class="btn-ghost" href="/demo">Voir la démo</a></div>
+          <h1>Gérez votre club sans y consacrer vos soirées<span class="dot">.</span></h1>
+          <p class="hsub">Inscriptions, cotisations, licences, membres — tout au même endroit, tout simple. Plus de papier, de tableurs ni de relances manuelles.</p>
+          <div class="ctas"><a class="btn-primary" href="/demo">Demander une démo</a><a class="btn-ghost" href="/tarifs">Voir les tarifs</a></div>
         </div>
         <div class="clubpanel">
           <div class="cp-head"><div class="cp-logo">AP</div><div><div class="n">AS Ploërmel</div><div class="s">Espace club · saison 2025-26</div></div></div>
@@ -60,7 +60,7 @@ const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="non
   <section class="sec light">
     <div class="container">
       <div class="eyebrow2">Le quotidien d'un bénévole</div>
-      <h2>On connaît vos galères.</h2>
+      <h2>Nous connaissons vos contraintes.</h2>
       <div class="enj">
         {enjeux.map((e, i) => (<div class="enjrow"><div class="no">{`0${i + 1}`}</div><div><div class="q">{e.q}</div><div class="a">{e.a}</div></div></div>))}
       </div>
@@ -70,8 +70,8 @@ const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="non
   <section class="sec">
     <div class="container">
       <div class="eyebrow2 center">Ce que ça change pour vous</div>
-      <h2 class="center">Simple. Vraiment simple.</h2>
-      <p class="lead center mb">Pensé pour des bénévoles, pas pour des informaticiens. Si vous savez remplir un formulaire, vous savez utiliser Fedora.</p>
+      <h2 class="center">Une prise en main immédiate.</h2>
+      <p class="lead center mb">Pensé pour des bénévoles, pas pour des experts techniques. Si vous savez remplir un formulaire, vous savez utiliser Fedora.</p>
       <div class="grid4">
         {benefices.map((b) => (<div class="bcard"><span class="ib" set:html={ckIcon(b.icon)} /><h3>{b.t}</h3><p>{b.d}</p></div>))}
       </div>
@@ -111,7 +111,7 @@ const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="non
     <div class="container center">
       <h2>Rendez du temps à vos bénévoles.</h2>
       <p class="lead center">Essayez gratuitement, ou laissez-nous vous faire une démo sur votre club.</p>
-      <div class="ctas center"><a class="btn-primary" href="/demo">Essayer gratuitement</a><a class="btn-ghost" href="/demo">Voir la démo</a></div>
+      <div class="ctas center"><a class="btn-primary" href="/demo">Demander une démo</a><a class="btn-ghost" href="/tarifs">Voir les tarifs</a></div>
     </div>
   </section>
 

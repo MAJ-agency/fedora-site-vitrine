@@ -4,14 +4,14 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 
 const enjeux = [
-  { q: "Des données éparpillées entre les échelons", a: "Ligues, comités et clubs travaillent chacun dans leur coin. Fedora unifie tout dans une seule base, à jour en temps réel." },
-  { q: "Des reversements complexes et manuels", a: "Les quote-parts se calculent et remontent automatiquement à chaque niveau. Fini les tableurs de répartition." },
+  { q: "Des données éparpillées entre les échelons", a: "Ligues, comités et clubs travaillent de manière cloisonnée. Fedora unifie tout dans une seule base, à jour en temps réel." },
+  { q: "Des reversements complexes et manuels", a: "Les quote-parts se calculent et remontent automatiquement à chaque niveau. Plus aucun tableur de répartition." },
   { q: "La conformité et les rapports institutionnels", a: "Exports normés, statistiques officielles, traçabilité — prêts à transmettre à vos tutelles en un clic." },
   { q: "Deux publics, un seul outil", a: "La profondeur pour vos experts au siège, la simplicité pour les bénévoles des clubs. Chacun son espace." },
 ];
 const benefices = [
   { t: "Pilotage temps réel", d: "Dashboards par ligue, comité et club. Les bons chiffres, à la seconde.", icon: `<path d="M3 3v18h18M7 15l4-4 3 3 5-6"/>` },
-  { t: "Reversements auto", d: "Quote-parts calculées et réparties par structure, sans intervention.", icon: `<path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>` },
+  { t: "Reversements automatisés", d: "Quote-parts calculées et réparties par structure, sans intervention.", icon: `<path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>` },
   { t: "Conformité & exports", d: "Rapports institutionnels normés, prêts pour vos tutelles.", icon: `<path d="M9 12l2 2 4-4M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/>` },
   { t: "RBAC hiérarchique", d: "Chaque échelon voit et gère uniquement son périmètre.", icon: `<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>` },
 ];
@@ -91,7 +91,7 @@ const ckIcon = (i) => `<svg viewBox="0 0 24 24" width="26" height="26" fill="non
       <div class="revwrap">
         <div>
           <div class="eyebrow2">Reversements &amp; quote-parts</div>
-          <h2>L'argent circule tout seul.</h2>
+          <h2>Les reversements circulent automatiquement.</h2>
           <p class="lead">À chaque licence vendue, Fedora calcule et répartit la quote-part de chaque niveau — fédération, ligue, comité, club. Automatiquement, traçable, à l'euro près.</p>
         </div>
         <div class="revcard">
