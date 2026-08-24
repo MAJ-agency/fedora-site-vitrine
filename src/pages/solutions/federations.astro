@@ -45,14 +45,6 @@ const themes = [
     visuel: "mobile",
   },
 ];
-const modules = [
-  { t: "Finances & reversements", d: "Quote-parts, SEPA, rapprochements, PSP (Lemonway, HelloAsso).", icon: `<path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>` },
-  { t: "Statistiques & BI", d: "Tableaux de bord, indicateurs clés, exports détaillés.", icon: `<path d="M3 3v18h18M7 15l4-4 3 3 5-6"/>` },
-  { t: "Compétitions", d: "Calendrier fédéral, inscriptions, classements officiels.", icon: `<path d="M6 9V4h12v5a6 6 0 0 1-12 0zM9 21h6M12 15v6"/>` },
-  { t: "Formations & diplômes", d: "Sessions, certifications, suivi des officiels et encadrants.", icon: `<path d="M22 10L12 5 2 10l10 5 10-5zM6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/>` },
-  { t: "Élections & AG", d: "Votes en ligne, assemblées générales dématérialisées.", icon: `<path d="M9 12l2 2 4-4M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/>` },
-  { t: "Annuaire & structures", d: "Arborescence fédérale, KYC, gestion des affiliations.", icon: `<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/>` },
-];
 const secu = [
   { t: "2FA & RBAC", d: "Double authentification, gestion fine des rôles par échelon.", icon: `<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>` },
   { t: "Hébergement HDS", d: "100 % français, certifié, sur 2 sites en France.", icon: `<path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/>` },
@@ -174,9 +166,9 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
     <div class="container">
       <div class="revwrap">
         <div>
-          <div class="eyebrow2">Reversements &amp; quote-parts</div>
-          <h2>Les reversements circulent automatiquement.</h2>
-          <p class="lead">À chaque licence vendue, Fedora calcule et répartit la quote-part de chaque niveau — fédération, ligue, comité, club. Automatiquement, traçable, à l'euro près.</p>
+          <div class="eyebrow2">Zoom — Le cas le plus complexe</div>
+          <h2>Ce qui se passe quand une licence est vendue.</h2>
+          <p class="lead">S'il fallait ne retenir qu'une preuve, ce serait celle-ci : la répartition des quote-parts entre échelons, le calcul que chaque fédération redoute et qu'aucun outil générique ne sait faire. Fedora le fait seul, à l'euro près et de façon traçable.</p>
         </div>
         <div class="revcard">
           <div class="flow">
@@ -192,22 +184,8 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
     </div>
   </section>
 
-  <!-- MODULES -->
-  <section class="sec light">
-    <div class="container">
-      <div class="eyebrow2 center">Fait pour l'échelon fédéral</div>
-      <h2 class="center">Les capacités qui comptent pour une fédération.</h2>
-      <p class="lead center mb">Le socle licences, plus les modules avancés pensés pour le pilotage d'un réseau.</p>
-      <div class="grid3">
-        {modules.map((m) => (
-          <div class="mod"><span class="ib" set:html={ckIcon(m.icon)} /><h4>{m.t}</h4><p>{m.d}</p></div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- SECURITE -->
-  <section class="sec dark">
+  <section class="sec light">
     <div class="container">
       <div class="eyebrow2 center">Sécurité &amp; souveraineté</div>
       <h2 class="center">Un niveau d'exigence à la hauteur d'une institution.</h2>
@@ -282,14 +260,11 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
   /* benefices + modules + secu */
   .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .mod { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
-  .mod h4 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 19px; margin: 12px 0 5px; }
-  .mod p { font-size: 16.5px; color: var(--muted); line-height: 1.45; }
   .secgrid { margin-top: 40px; }
   .scard h4 { font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 17px; margin: 14px 0 7px; }
-  .scard p { font-size: 16.5px; color: #aeb8c7; line-height: 1.5; }
-  .scard .ib { background: rgba(240,122,32,.16); }
+  .scard { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+  .scard p { font-size: 16.5px; color: var(--muted); line-height: 1.5; }
+  .scard .ib { background: var(--orange-soft); }
 
   /* reversements */
   .revwrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; }
@@ -364,7 +339,7 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
     h1 { font-size: 46px; }
     .revwrap { grid-template-columns: 1fr; gap: 32px; }
     .grid4 { grid-template-columns: repeat(2, 1fr); }
-    .grid3 { grid-template-columns: repeat(2, 1fr); }
+
   }
   @media (max-width: 620px) {
     .container { padding: 0 20px; }
@@ -375,7 +350,7 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
     .hsub, .lead { font-size: 21px; }
     .ctas { flex-direction: column; align-items: stretch; }
     .btn-primary, .btn-ghost { text-align: center; }
-    .grid4, .grid3 { grid-template-columns: 1fr; }
+    .grid4 { grid-template-columns: 1fr; }
     .finalcta h2 { font-size: 33px; }
     .th2 { font-size: 30px; }
     .vkpis { grid-template-columns: 1fr; }
