@@ -348,7 +348,9 @@ const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   .tfeat { display: flex; gap: 13px; align-items: flex-start; }
   .tck { width: 30px; height: 30px; border-radius: 9px; background: var(--orange-soft); display: flex; align-items: center; justify-content: center; flex: none; }
   .tfeat b { display: block; font-family: "Gabarito", sans-serif; font-weight: 700; font-size: 17px; }
-  .tfeat span { display: block; font-size: 16px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+  /* NB : cibler `.tfeat span` attraperait aussi `.tck` (l'icône) et écraserait
+     son display:flex — d'où le centrage cassé. On ne vise que le span de texte. */
+  .tfeat div span { display: block; font-size: 16px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
 
   /* visuels des thèmes */
   .vcard { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 26px 54px -30px rgba(13,30,53,.4); }
