@@ -5,11 +5,12 @@ interface Props {
   class?: string;
 }
 const { light = false, width = 108, class: cls } = Astro.props;
-const ink = light ? "#ffffff" : "#0d1e35";
+// L'encre suit currentColor : la couleur est pilotée par CSS, donc par le thème.
+const ink = "currentColor";
 ---
 
 <svg
-  class={cls}
+  class={["fedora-logo", light ? "on-dark" : "on-light", cls].filter(Boolean).join(" ")}
   width={width}
   viewBox="0 0 1080 320"
   fill="none"

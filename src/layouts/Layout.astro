@@ -27,6 +27,20 @@ const {
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    <!-- Applique le thème AVANT le premier rendu : sinon la page clignote
+         en sombre pendant une frame avant de passer en clair. -->
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("fedora-theme");
+          if (!t) t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
   </head>
   <body>
     <slot />

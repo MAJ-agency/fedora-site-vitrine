@@ -43,3 +43,237 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; }
+
+/* ============================================================
+   MODE CLAIR
+   Le mode sombre (navy) reste la base historique du site ; ce bloc
+   le repeint quand <html data-theme="light">.
+   Cette couche doit s'imposer aux styles scopés d'Astro, dont la
+   spécificité est plus forte (attribut de scope sur chaque compound) :
+   d'où le !important, qui est ici le rôle assumé d'une couche de thème.
+   ============================================================ */
+html[data-theme="light"] body { background: #fff !important; color: var(--navy) !important; }
+
+/* --- Sections sombres -> claires (on garde l'alternance blanc/cloud) --- */
+html[data-theme="light"] .hero,
+html[data-theme="light"] .demo { background: #fff !important; color: var(--navy) !important; }
+html[data-theme="light"] .sec.dark,
+html[data-theme="light"] .sec.navy,
+html[data-theme="light"] section.dark { background: var(--cloud) !important; color: var(--navy) !important; }
+
+/* motif de points du hero : clair sur sombre -> sombre sur clair */
+html[data-theme="light"] .hero::before,
+html[data-theme="light"] .demo::before { background-image: radial-gradient(rgba(13,30,53,.07) 1px, transparent 1px) !important; }
+html[data-theme="light"] .hero::after,
+html[data-theme="light"] .demo::after { background: radial-gradient(circle, rgba(240,122,32,.13), transparent 62%) !important; }
+
+/* --- Textes qui étaient clairs sur navy --- */
+html[data-theme="light"] .hsub,
+html[data-theme="light"] .sub,
+html[data-theme="light"] .dark .lead,
+html[data-theme="light"] .navy .lead,
+html[data-theme="light"] .lead2,
+html[data-theme="light"] .plab,
+html[data-theme="light"] .pfoot,
+html[data-theme="light"] .netnote,
+html[data-theme="light"] .who,
+html[data-theme="light"] .microcopy,
+html[data-theme="light"] .fdesc,
+html[data-theme="light"] .promo,
+html[data-theme="light"] .step p,
+html[data-theme="light"] .scard p,
+html[data-theme="light"] .spc p { color: var(--muted) !important; }
+
+html[data-theme="light"] .crumb,
+html[data-theme="light"] .pseasons,
+html[data-theme="light"] .seolabel { color: #6b7891 !important; }
+
+html[data-theme="light"] .pev,
+html[data-theme="light"] .fd,
+html[data-theme="light"] .chip { color: #3a4658 !important; }
+
+html[data-theme="light"] .pev b,
+html[data-theme="light"] .fd b,
+html[data-theme="light"] .who b,
+html[data-theme="light"] .quote,
+html[data-theme="light"] .big,
+html[data-theme="light"] .pnum,
+html[data-theme="light"] .ct,
+html[data-theme="light"] .impact span,
+html[data-theme="light"] .stat b,
+html[data-theme="light"] .step h4,
+html[data-theme="light"] .scard h4,
+html[data-theme="light"] .spc h3,
+html[data-theme="light"] .ftitle,
+html[data-theme="light"] .pt { color: var(--navy) !important; }
+
+/* --- Panneaux « maquette » : dégradé navy -> carte blanche --- */
+html[data-theme="light"] .pulse,
+html[data-theme="light"] .cockpit,
+html[data-theme="light"] .tablecard,
+html[data-theme="light"] .revcard,
+html[data-theme="light"] .feature {
+  background: #fff !important;
+  border-color: var(--line) !important;
+  color: var(--navy) !important;
+  box-shadow: 0 30px 60px -30px rgba(13,30,53,.28) !important;
+}
+html[data-theme="light"] .feature { background: var(--navy) !important; color: #fff !important; } /* encart d’accent : reste navy */
+
+/* --- Remplissages et bordures translucides --- */
+html[data-theme="light"] .pev,
+html[data-theme="light"] .kpi,
+html[data-theme="light"] .fnode,
+html[data-theme="light"] .lvl,
+html[data-theme="light"] .scr-chartwrap,
+html[data-theme="light"] .scr-kpis > div,
+html[data-theme="light"] .fstep,
+html[data-theme="light"] .chipf { background: var(--cloud) !important; border-color: var(--line) !important; }
+
+html[data-theme="light"] .pfeed,
+html[data-theme="light"] .pfoot,
+html[data-theme="light"] .pseasons,
+html[data-theme="light"] .impact,
+html[data-theme="light"] .fd { border-color: var(--line) !important; }
+
+html[data-theme="light"] .btn-ghost { border-color: var(--navy) !important; color: var(--navy) !important; }
+html[data-theme="light"] .chip { border-color: var(--line) !important; }
+html[data-theme="light"] .chip.active { background: var(--orange-soft) !important; border-color: var(--orange) !important; color: var(--navy) !important; }
+
+/* --- Tableau de licences (page socle) --- */
+html[data-theme="light"] .tablecard th { color: #6b7891 !important; border-color: var(--line) !important; }
+html[data-theme="light"] .tablecard td { color: var(--navy) !important; border-color: var(--line) !important; }
+html[data-theme="light"] .tablecard td .av { background: var(--cloud) !important; }
+html[data-theme="light"] .tablecard td .mono { color: var(--muted) !important; }
+html[data-theme="light"] .tc-head .t { color: var(--navy) !important; }
+
+/* --- Pied de page --- */
+html[data-theme="light"] .footer { background: var(--cloud) !important; color: var(--muted) !important; border-top: 1px solid var(--line) !important; }
+html[data-theme="light"] .footer .col h4 { color: var(--navy) !important; }
+html[data-theme="light"] .footer a { color: var(--muted) !important; }
+html[data-theme="light"] .footer a:hover { color: var(--navy) !important; }
+html[data-theme="light"] .footer .top,
+html[data-theme="light"] .footer .seo { border-color: var(--line) !important; }
+
+/* --- Logo : l'encre suit currentColor --- */
+.fedora-logo.on-dark { color: #fff !important; }
+.fedora-logo.on-light { color: var(--navy) !important; }
+/* en mode clair, même le logo "sur fond sombre" doit redevenir navy */
+html[data-theme="light"] .fedora-logo.on-dark { color: var(--navy) !important; }
+/* ...sauf dans le footer s'il reste sombre (non applicable ici : footer clair) */
+
+/* --- Nav : la prop `theme="dark"` d'une page doit céder au mode clair --- */
+html[data-theme="light"] .site-header.dark .links > a,
+html[data-theme="light"] .site-header.dark .drop > a { color: var(--muted) !important; }
+html[data-theme="light"] .site-header.dark .links a:hover { color: var(--navy) !important; }
+html[data-theme="light"] .site-header.dark .burger { border-color: var(--line) !important; }
+html[data-theme="light"] .site-header.dark .burger span { background: var(--navy) !important; }
+html[data-theme="light"] .site-header.dark .themetoggle { border-color: var(--line) !important; color: var(--muted) !important; }
+html[data-theme="light"] .site-header.dark .themetoggle:hover { background: var(--cloud) !important; color: var(--navy) !important; }
+html[data-theme="light"] .site-header.dark .links { background: #fff !important; border-color: var(--line) !important; }
+
+/* --- Icône du bouton : on montre le mode vers lequel on bascule --- */
+html[data-theme="light"] .themetoggle .ic-sun { display: none !important; }
+html[data-theme="light"] .themetoggle .ic-moon { display: block !important; }
+
+/* --- Bandeau showcase de la home (classe .showcase, sans .dark) --- */
+html[data-theme="light"] .showcase { background: var(--cloud) !important; color: var(--navy) !important; }
+html[data-theme="light"] .showcase::before { background-image: radial-gradient(rgba(13,30,53,.06) 1px, transparent 1px) !important; }
+html[data-theme="light"] .sc-sub { color: var(--muted) !important; }
+
+/* --- Intérieur des maquettes : cockpit, showcase, téléphone, flux --- */
+html[data-theme="light"] .screen,
+html[data-theme="light"] .s-main,
+html[data-theme="light"] .s-left,
+html[data-theme="light"] .mp-app,
+html[data-theme="light"] .revcard { background: #fff !important; border-color: var(--line) !important; color: var(--navy) !important; }
+html[data-theme="light"] .mp,
+html[data-theme="light"] .phone { background: var(--cloud) !important; border-color: var(--line) !important; }
+html[data-theme="light"] .mp-notch,
+html[data-theme="light"] .notch { background: var(--cloud) !important; }
+
+/* libellés secondaires des maquettes */
+html[data-theme="light"] .kpi span,
+html[data-theme="light"] .kpi em.n,
+html[data-theme="light"] .fd .tm,
+html[data-theme="light"] .cl span,
+html[data-theme="light"] .scr-kpis span,
+html[data-theme="light"] .scr-s,
+html[data-theme="light"] .scr-money span,
+html[data-theme="light"] .scr-barlab,
+html[data-theme="light"] .pev .pw,
+html[data-theme="light"] .tab { color: var(--muted) !important; }
+
+/* chiffres et titres des maquettes */
+html[data-theme="light"] .kpi b,
+html[data-theme="light"] .cl b,
+html[data-theme="light"] .scr-kpis b,
+html[data-theme="light"] .scr-t,
+html[data-theme="light"] .scr-title,
+html[data-theme="light"] .scr-money,
+html[data-theme="light"] .mp-title,
+html[data-theme="light"] .scr-barlab b,
+html[data-theme="light"] .fd b,
+html[data-theme="light"] .ck-head .t,
+html[data-theme="light"] .fnode .fl,
+html[data-theme="light"] .lvl .nm { color: var(--navy) !important; }
+
+html[data-theme="light"] .fnode,
+html[data-theme="light"] .scr-track { background: var(--cloud) !important; border-color: var(--line) !important; }
+html[data-theme="light"] .tabbar { background: var(--cloud) !important; border-color: var(--line) !important; }
+html[data-theme="light"] .farrow { color: var(--muted) !important; }
+
+/* --- Gras restés blancs dans les pieds de maquette et fils d'Ariane --- */
+html[data-theme="light"] .pfoot b,
+/* (clubs) le gras du pied est en menthe -> vert foncé, cf. règle plus bas */
+html[data-theme="light"] .plab b,
+html[data-theme="light"] .crumb b,
+html[data-theme="light"] .vfoot b,
+html[data-theme="light"] .netnote b,
+html[data-theme="light"] .microcopy b,
+html[data-theme="light"] .reassure b { color: var(--navy) !important; }
+/* le vert menthe (lisible sur navy) devient le vert foncé sur fond clair */
+html[data-theme="light"] .pfoot b.mint,
+html[data-theme="light"] .ok,
+html[data-theme="light"] .ck-live,
+html[data-theme="light"] .live,
+html[data-theme="light"] .scr-live { color: var(--good) !important; }
+html[data-theme="light"] .punit,
+html[data-theme="light"] .pclub,
+html[data-theme="light"] .pl { color: var(--navy) !important; }
+
+/* --- Page socle : puces de filtre + cartes "espaces dédiés" --- */
+html[data-theme="light"] .chipf { color: var(--muted) !important; background: var(--cloud) !important; border-color: var(--line) !important; }
+html[data-theme="light"] .chipf.on { color: var(--navy) !important; background: var(--orange-soft) !important; border-color: var(--orange) !important; }
+/* .spc gardait un fond navy alors que son texte passait en navy -> illisible */
+html[data-theme="light"] .spc { background: #fff !important; border-color: var(--line) !important; }
+html[data-theme="light"] .spc .ib { background: var(--orange-soft) !important; }
+html[data-theme="light"] .incl { color: var(--good) !important; background: #e6f6ee !important; border-color: #b9e6cf !important; }
+
+/* --- Page licenciés : badges stores + écran du téléphone --- */
+/* les icônes Apple/Google sont en fill="#fff" : invisibles sur fond clair */
+html[data-theme="light"] .store svg { fill: var(--navy) !important; }
+html[data-theme="light"] .store .stxt { background: var(--cloud) !important; border-color: var(--line) !important; color: var(--navy) !important; }
+html[data-theme="light"] .appbar .ti { color: var(--navy) !important; }
+html[data-theme="light"] .appbar .bell { background: var(--cloud) !important; }
+html[data-theme="light"] .appbar .bell svg { stroke: var(--navy) !important; }
+html[data-theme="light"] .points .pd,
+html[data-theme="light"] .points b { color: var(--muted) !important; }
+html[data-theme="light"] .points b { color: var(--navy) !important; }
+
+/* --- La carte "migration" reste navy en mode clair : ses éléments internes
+       doivent donc conserver le style sombre (sinon clair sur clair). --- */
+html[data-theme="light"] .feature .fstep { background: rgba(255,255,255,.04) !important; border-color: rgba(255,255,255,.08) !important; }
+html[data-theme="light"] .feature .ftitle,
+html[data-theme="light"] .feature .fstep b,
+html[data-theme="light"] .feature .flink { color: #fff !important; }
+html[data-theme="light"] .feature .fdesc,
+html[data-theme="light"] .feature .fstep span { color: #aeb8c7 !important; }
+/* --- Page produit : puces d'ancrage du hero --- */
+html[data-theme="light"] .pb { color: var(--muted) !important; border-color: var(--line) !important; }
+html[data-theme="light"] .pb:hover { background: var(--orange-soft) !important; border-color: var(--orange) !important; color: var(--navy) !important; }
+/* --- Pages 404 / merci : rangée de liens sous le hero
+       (.links y désigne autre chose que la nav, d'où le préfixe .body) --- */
+html[data-theme="light"] .body .links a { color: var(--muted) !important; }
+html[data-theme="light"] .body .links a:hover { color: var(--navy) !important; }
+html[data-theme="light"] .body .links span { color: #b9bfc9 !important; }
