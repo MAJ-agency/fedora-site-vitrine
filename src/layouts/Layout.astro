@@ -33,8 +33,10 @@ const {
     <script is:inline>
       (function () {
         try {
-          var t = localStorage.getItem("fedora-theme");
-          if (!t) t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          // "Marque d’abord" : tout nouveau visiteur découvre le site en navy.
+          // La préférence système n’est volontairement PAS suivie ; seul un choix
+          // explicite du visiteur (clic sur la bascule) est mémorisé.
+          var t = localStorage.getItem("fedora-theme") || "dark";
           document.documentElement.setAttribute("data-theme", t);
         } catch (e) {
           document.documentElement.setAttribute("data-theme", "dark");
